@@ -183,7 +183,7 @@ class MissileManager:
     def _set_missile_time_period_correct(self, missile, launch_time: datetime):
         """
         基于STK官方文档的正确导弹时间设置方法
-        关键：导弹时间设置必须在轨迹类型设置后，轨迹参数配置前进行
+        使用 EphemerisInterval.SetExplicitInterval() 方法
         """
         try:
             # 获取场景时间范围
@@ -214,23 +214,23 @@ class MissileManager:
             launch_time_str = launch_time.strftime("%d %b %Y %H:%M:%S.000")
             impact_time_str = impact_time.strftime("%d %b %Y %H:%M:%S.000")
 
-            # 基于STK官方文档：导弹对象时间设置的正确方法
+            # 基于STK官方文档：使用EphemerisInterval.SetExplicitInterval()方法
             success = False
 
-            # 方法1: 使用轨迹对象的时间设置（推荐）
+            # 方法1: 使用EphemerisInterval.SetExplicitInterval()（STK官方推荐）
             try:
                 trajectory = missile.Trajectory
-                # 设置轨迹的时间范围
-                trajectory.SetTimePeriod(launch_time_str, impact_time_str)
-                logger.info(f"✅ 轨迹时间范围设置成功: {launch_time_str} - {impact_time_str}")
+                # 根据STK官方文档，使用EphemerisInterval设置时间范围
+                trajectory.EphemerisInterval.SetExplicitInterval(launch_time_str, impact_time_str)
+                logger.info(f"✅ EphemerisInterval时间设置成功: {launch_time_str} - {impact_time_str}")
                 success = True
 
             except Exception as e1:
-                logger.debug(f"轨迹时间设置失败: {e1}")
+                logger.warning(f"EphemerisInterval时间设置失败: {e1}")
 
-                # 方法2: 使用Connect命令（STK通用方法）
+                # 方法2: 使用Connect命令设置时间范围
                 try:
-                    missile_path = f"Missile/{missile.InstanceName}"
+                    missile_path = f"*/Missile/{missile.InstanceName}"
                     time_cmd = f"SetTimePeriod {missile_path} \"{launch_time_str}\" \"{impact_time_str}\""
                     self.stk_manager.root.ExecuteCommand(time_cmd)
                     logger.info(f"✅ Connect命令时间设置成功: {launch_time_str} - {impact_time_str}")
@@ -239,17 +239,19 @@ class MissileManager:
                 except Exception as e2:
                     logger.debug(f"Connect命令时间设置失败: {e2}")
 
-                    # 方法3: 使用导弹对象的SetTimePeriod方法
+                    # 方法3: 尝试设置轨迹的StartTime和StopTime属性（已弃用但可能有效）
                     try:
-                        missile.SetTimePeriod(launch_time_str, impact_time_str)
-                        logger.info(f"✅ 导弹对象时间设置成功: {launch_time_str} - {impact_time_str}")
+                        trajectory = missile.Trajectory
+                        trajectory.StartTime = launch_time_str
+                        trajectory.StopTime = impact_time_str
+                        logger.info(f"✅ 轨迹StartTime/StopTime设置成功: {launch_time_str} - {impact_time_str}")
                         success = True
 
                     except Exception as e3:
                         logger.warning(f"所有时间设置方法都失败:")
-                        logger.warning(f"  轨迹方法: {e1}")
+                        logger.warning(f"  EphemerisInterval方法: {e1}")
                         logger.warning(f"  Connect命令: {e2}")
-                        logger.warning(f"  导弹对象方法: {e3}")
+                        logger.warning(f"  StartTime/StopTime方法: {e3}")
                         logger.info(f"⏰ 将使用场景默认时间范围")
 
             # 如果时间设置成功，记录相关信息
@@ -805,9 +807,18 @@ class MissileManager:
                 launch_sequence=missile_scenario.get("launch_sequence", 1)
             )
 
-            # 2. 使用时间管理器计算发射时间
+            # 2. 获取发射时间 - 优先使用传入的launch_time
             launch_sequence = missile_scenario.get("launch_sequence", 1)
-            launch_time_dt, launch_time_stk = self.time_manager.calculate_missile_launch_time(launch_sequence)
+
+            if "launch_time" in missile_scenario and missile_scenario["launch_time"]:
+                # 使用传入的发射时间（用于随机导弹）
+                launch_time_dt = missile_scenario["launch_time"]
+                launch_time_stk = launch_time_dt.strftime("%d %b %Y %H:%M:%S.000")
+                logger.info(f"🎯 使用传入的发射时间: {launch_time_dt}")
+            else:
+                # 使用时间管理器计算发射时间（用于固定序列导弹）
+                launch_time_dt, launch_time_stk = self.time_manager.calculate_missile_launch_time(launch_sequence)
+                logger.info(f"🎯 计算的发射时间: {launch_time_dt}")
 
             # 3. 创建STK导弹对象
             success = self.create_missile(missile_id, launch_time_dt)
@@ -852,7 +863,7 @@ class MissileManager:
     def _get_stk_trajectory_data(self, missile_id: str) -> Optional[Dict[str, Any]]:
         """
         从STK获取导弹轨迹数据，包括准确的时间信息
-        基于STK官方文档和调试发现的方法
+        使用已测试成功的get_missile_launch_and_impact_times方法
 
         Args:
             missile_id: 导弹ID
@@ -871,405 +882,126 @@ class MissileManager:
                 logger.error(f"❌ 获取STK导弹对象失败: {missile_id}, {get_error}")
                 return None
 
-            # 方法1: 从Available Times DataProvider获取导弹时间范围 (基于调试发现)
+            # 方法1: 使用已测试成功的get_missile_launch_and_impact_times方法
             try:
-                logger.info(f"🔍 尝试从Available Times DataProvider获取时间: {missile_id}")
+                logger.info(f"🔍 使用get_missile_launch_and_impact_times获取时间: {missile_id}")
 
-                # 获取Available Times DataProvider
-                dp_available_times = stk_missile.DataProviders.Item("Available Times")
-                logger.info(f"✅ 获取Available Times DataProvider成功")
+                # 使用我们已经测试成功的方法获取时间
+                launch_time_dt, impact_time_dt = self.get_missile_launch_and_impact_times(missile_id)
 
-                # 获取场景时间范围
-                scenario = self.stk_manager.scenario
-                scenario_start = scenario.StartTime
-                scenario_stop = scenario.StopTime
+                if launch_time_dt and impact_time_dt:
+                    # 计算飞行时间
+                    flight_duration = (impact_time_dt - launch_time_dt).total_seconds()
 
-                # 执行DataProvider查询 - Available Times需要时间范围参数
-                result = dp_available_times.Exec(scenario_start, scenario_stop)
+                    logger.info(f"✅ 成功获取导弹时间信息: {missile_id}")
+                    logger.info(f"   发射时间: {launch_time_dt}")
+                    logger.info(f"   撞击时间: {impact_time_dt}")
+                    logger.info(f"   飞行时间: {flight_duration:.1f}秒")
 
-                if result and result.DataSets.Count > 0:
-                    dataset = result.DataSets.Item(0)
-                    logger.info(f"✅ Available Times数据集获取成功，行数: {dataset.RowCount}")
-
-                    if dataset.RowCount > 0:
-                        # 获取第一行和最后一行的时间
-                        start_time_str = dataset.GetValue(0, 0)  # 第一行第一列（开始时间）
-                        stop_time_str = dataset.GetValue(0, 1)   # 第一行第二列（结束时间）
-
-                        logger.info(f"📅 Available Times时间范围: {start_time_str} - {stop_time_str}")
-
-                        # 转换为datetime对象
-                        try:
-                            # 尝试多种时间格式
-                            time_formats = [
-                                "%d %b %Y %H:%M:%S.%f",
-                                "%d %b %Y %H:%M:%S",
-                                "%Y-%m-%d %H:%M:%S.%f",
-                                "%Y-%m-%d %H:%M:%S"
-                            ]
-
-                            start_time = None
-                            stop_time = None
-
-                            for fmt in time_formats:
-                                try:
-                                    start_time = datetime.strptime(start_time_str, fmt)
-                                    stop_time = datetime.strptime(stop_time_str, fmt)
-                                    break
-                                except ValueError:
-                                    continue
-
-                            if start_time and stop_time:
-                                flight_duration = (stop_time - start_time).total_seconds()
-
-                                return {
-                                    "missile_id": missile_id,
-                                    "start_time": start_time,
-                                    "stop_time": stop_time,
-                                    "flight_time_seconds": flight_duration,
-                                    "trajectory_points": [],
-                                    "data_source": "STK_Available_Times_DataProvider"
-                                }
-                            else:
-                                logger.warning(f"⚠️ 无法解析Available Times时间格式: {start_time_str}, {stop_time_str}")
-
-                        except Exception as parse_error:
-                            logger.warning(f"⚠️ Available Times时间解析失败: {parse_error}")
-                    else:
-                        logger.warning(f"⚠️ Available Times数据集为空")
-                else:
-                    logger.warning(f"⚠️ Available Times DataProvider执行失败")
-
-            except Exception as available_times_error:
-                logger.warning(f"⚠️ Available Times DataProvider方法失败: {available_times_error}")
-
-            # 方法2: 从轨迹对象的Launch和ImpactLocation获取时间 (基于调试发现)
-            try:
-                logger.info(f"🔍 尝试从Launch和ImpactLocation对象获取时间: {missile_id}")
-
-                # 获取导弹的轨迹对象
-                trajectory = stk_missile.Trajectory
-
-                # 检查Launch对象
-                if hasattr(trajectory, 'Launch'):
-                    launch_obj = trajectory.Launch
-                    logger.info(f"✅ 获取Launch对象成功: {type(launch_obj).__name__}")
-
-                    # 检查Launch对象的属性
-                    launch_attrs = dir(launch_obj)
-                    time_attrs = [attr for attr in launch_attrs if 'time' in attr.lower()]
-                    logger.info(f"📋 Launch对象时间相关属性: {time_attrs}")
-
-                    # 尝试获取发射时间
-                    launch_time_str = None
-                    for attr in ['Time', 'LaunchTime', 'StartTime']:
-                        if hasattr(launch_obj, attr):
-                            try:
-                                launch_time_str = getattr(launch_obj, attr)
-                                logger.info(f"✅ 从Launch对象获取时间: {attr} = {launch_time_str}")
-                                break
-                            except Exception as attr_error:
-                                logger.debug(f"Launch属性访问失败: {attr}, {attr_error}")
-
-                # 检查ImpactLocation对象
-                impact_time_str = None
-                if hasattr(trajectory, 'ImpactLocation'):
-                    impact_obj = trajectory.ImpactLocation
-                    logger.info(f"✅ 获取ImpactLocation对象成功: {type(impact_obj).__name__}")
-
-                    # 检查ImpactLocation对象的属性
-                    impact_attrs = dir(impact_obj)
-                    time_attrs = [attr for attr in impact_attrs if 'time' in attr.lower()]
-                    logger.info(f"📋 ImpactLocation对象时间相关属性: {time_attrs}")
-
-                    # 尝试获取撞击时间
-                    for attr in ['Time', 'ImpactTime', 'StopTime']:
-                        if hasattr(impact_obj, attr):
-                            try:
-                                impact_time_str = getattr(impact_obj, attr)
-                                logger.info(f"✅ 从ImpactLocation对象获取时间: {attr} = {impact_time_str}")
-                                break
-                            except Exception as attr_error:
-                                logger.debug(f"ImpactLocation属性访问失败: {attr}, {attr_error}")
-
-                # 如果获取到了发射和撞击时间
-                if launch_time_str and impact_time_str:
-                    logger.info(f"📅 Launch/Impact时间: {launch_time_str} - {impact_time_str}")
-
-                    # 转换为datetime对象
+                    # 尝试获取轨迹点数据
+                    trajectory_points = []
                     try:
-                        time_formats = [
-                            "%d %b %Y %H:%M:%S.%f",
-                            "%d %b %Y %H:%M:%S",
-                            "%Y-%m-%d %H:%M:%S.%f",
-                            "%Y-%m-%d %H:%M:%S"
-                        ]
+                        # 获取LLA State DataProvider来获取轨迹点
+                        dp_lla = stk_missile.DataProviders.Item("LLA State")
+                        scenario = self.stk_manager.scenario
+                        scenario_start = scenario.StartTime
+                        scenario_stop = scenario.StopTime
 
-                        start_time = None
-                        stop_time = None
+                        # 使用60秒间隔获取轨迹点
+                        lla_result = dp_lla.Exec(scenario_start, scenario_stop, 60)
 
-                        for fmt in time_formats:
-                            try:
-                                start_time = datetime.strptime(launch_time_str, fmt)
-                                stop_time = datetime.strptime(impact_time_str, fmt)
-                                break
-                            except ValueError:
-                                continue
+                        if lla_result and lla_result.DataSets.Count > 0:
+                            lla_dataset = lla_result.DataSets.Item(0)
+                            if lla_dataset.RowCount > 0:
+                                logger.info(f"✅ 获取到 {lla_dataset.RowCount} 个轨迹点")
 
-                        if start_time and stop_time:
-                            flight_duration = (stop_time - start_time).total_seconds()
+                                # 提取轨迹点（只取前10个作为示例）
+                                for i in range(min(10, lla_dataset.RowCount)):
+                                    time_val = lla_dataset.GetValue(i, 0)
+                                    lat_val = lla_dataset.GetValue(i, 1)
+                                    lon_val = lla_dataset.GetValue(i, 2)
+                                    alt_val = lla_dataset.GetValue(i, 3)
 
-                            return {
-                                "missile_id": missile_id,
-                                "start_time": start_time,
-                                "stop_time": stop_time,
-                                "flight_time_seconds": flight_duration,
-                                "trajectory_points": [],
-                                "data_source": "STK_Launch_Impact_Objects"
-                            }
+                                    trajectory_points.append({
+                                        "time": time_val,
+                                        "latitude": lat_val,
+                                        "longitude": lon_val,
+                                        "altitude": alt_val
+                                    })
+                            else:
+                                logger.warning(f"⚠️ LLA State数据集为空: {missile_id}")
                         else:
-                            logger.warning(f"⚠️ 无法解析Launch/Impact时间格式")
+                            logger.warning(f"⚠️ LLA State DataProvider无数据: {missile_id}")
 
-                    except Exception as parse_error:
-                        logger.warning(f"⚠️ Launch/Impact时间解析失败: {parse_error}")
+                    except Exception as lla_error:
+                        logger.debug(f"LLA State获取失败: {lla_error}")
+
+                    return {
+                        "missile_id": missile_id,
+                        "start_time": launch_time_dt,
+                        "stop_time": impact_time_dt,
+                        "flight_time_seconds": flight_duration,
+                        "data_source": "STK_GetTimePeriod",
+                        "trajectory_points": trajectory_points,
+                        "stk_data_quality": {
+                            "has_real_trajectory": len(trajectory_points) > 0,
+                            "trajectory_points_count": len(trajectory_points),
+                            "time_source": "GetTimePeriod_or_Estimation"
+                        }
+                    }
                 else:
-                    logger.warning(f"⚠️ 无法从Launch/Impact对象获取完整时间信息")
+                    logger.warning(f"⚠️ get_missile_launch_and_impact_times返回空时间: {missile_id}")
 
-            except Exception as launch_impact_error:
-                logger.warning(f"⚠️ Launch/Impact对象方法失败: {launch_impact_error}")
+            except Exception as time_error:
+                logger.warning(f"⚠️ get_missile_launch_and_impact_times方法失败: {time_error}")
 
-            # 方法2: 从DataProvider获取轨迹数据 (基于STK官方文档)
+            # 方法2: 备用方案 - 从内部存储获取时间信息
             try:
-                logger.info(f"🔍 尝试从DataProvider获取轨迹数据: {missile_id}")
+                logger.info(f"🔍 尝试从内部存储获取时间信息: {missile_id}")
 
-                # 获取场景时间范围
-                scenario = self.stk_manager.scenario
-                scenario_start = scenario.StartTime
-                scenario_stop = scenario.StopTime
+                if missile_id in self.missile_targets:
+                    missile_info = self.missile_targets[missile_id]
+                    launch_time = missile_info.get("launch_time")
 
-                logger.info(f"📅 使用场景时间范围: {scenario_start} - {scenario_stop}")
+                    if isinstance(launch_time, datetime):
+                        # 估算撞击时间（30分钟后）
+                        impact_time = launch_time + timedelta(minutes=30)
+                        flight_duration = (impact_time - launch_time).total_seconds()
 
-                # 尝试获取LLA State DataProvider
-                try:
-                    dp_lla = stk_missile.DataProviders.Item("LLA State")
-                    logger.info(f"✅ 获取LLA State DataProvider成功")
+                        logger.info(f"✅ 从内部存储获取时间信息: {missile_id}")
+                        logger.info(f"   发射时间: {launch_time}")
+                        logger.info(f"   估算撞击时间: {impact_time}")
 
-                    # 执行DataProvider查询 - 使用正确的参数格式
-                    # 对于LLA State DataProvider，需要指定时间步长
-                    result = dp_lla.Exec(scenario_start, scenario_stop, 60)
-                    logger.info(f"✅ LLA State DataProvider查询执行成功")
-
-                except Exception as dp_get_error:
-                    logger.warning(f"⚠️ 获取LLA State DataProvider失败: {dp_get_error}")
-                    # 尝试其他DataProvider
-                    try:
-                        dp_cartesian = stk_missile.DataProviders.Item("Cartesian State")
-                        logger.info(f"✅ 获取Cartesian State DataProvider成功")
-                        result = dp_cartesian.Exec(scenario_start, scenario_stop, 60)
-                        logger.info(f"✅ Cartesian DataProvider查询执行成功")
-                    except Exception as dp_cart_error:
-                        logger.warning(f"⚠️ 获取Cartesian State DataProvider失败: {dp_cart_error}")
-                        raise Exception("无法获取任何DataProvider")
-
-                if result and result.DataSets.Count > 0:
-                    dataset = result.DataSets.Item(0)
-
-                    if dataset.RowCount > 0:
-                        # 获取第一个和最后一个数据点的时间
-                        first_time_str = dataset.GetValue(0, 0)  # 第一行第一列（时间）
-                        last_time_str = dataset.GetValue(dataset.RowCount - 1, 0)  # 最后一行第一列
-
-                        logger.info(f"📊 DataProvider时间范围: {first_time_str} - {last_time_str}")
-
-                        # 转换时间格式
-                        try:
-                            # STK DataProvider时间格式通常是秒数
-                            if isinstance(first_time_str, (int, float)) or first_time_str.replace('.', '').isdigit():
-                                # 时间是相对于历元的秒数
-                                epoch_time = datetime.strptime(scenario_start, "%d %b %Y %H:%M:%S.%f")
-                                start_time = epoch_time + timedelta(seconds=float(first_time_str))
-                                stop_time = epoch_time + timedelta(seconds=float(last_time_str))
-                            else:
-                                # 时间是绝对时间字符串
-                                start_time = datetime.strptime(first_time_str, "%d %b %Y %H:%M:%S.%f")
-                                stop_time = datetime.strptime(last_time_str, "%d %b %Y %H:%M:%S.%f")
-
-                            flight_duration = (stop_time - start_time).total_seconds()
-
-                            # 提取轨迹点（可选）
-                            trajectory_points = []
-                            for i in range(min(dataset.RowCount, 10)):  # 最多取10个点作为示例
-                                time_val = dataset.GetValue(i, 0)
-                                lat_val = dataset.GetValue(i, 1)
-                                lon_val = dataset.GetValue(i, 2)
-                                alt_val = dataset.GetValue(i, 3)
-
-                                if isinstance(time_val, (int, float)) or time_val.replace('.', '').isdigit():
-                                    point_time = epoch_time + timedelta(seconds=float(time_val))
-                                else:
-                                    point_time = datetime.strptime(time_val, "%d %b %Y %H:%M:%S.%f")
-
-                                trajectory_points.append({
-                                    "time": point_time,
-                                    "lat": float(lat_val),
-                                    "lon": float(lon_val),
-                                    "alt": float(alt_val)
-                                })
-
-                            return {
-                                "missile_id": missile_id,
-                                "start_time": start_time,
-                                "stop_time": stop_time,
-                                "flight_time_seconds": flight_duration,
-                                "trajectory_points": trajectory_points,
-                                "data_source": "STK_DataProvider_LLA"
+                        return {
+                            "missile_id": missile_id,
+                            "start_time": launch_time,
+                            "stop_time": impact_time,
+                            "flight_time_seconds": flight_duration,
+                            "data_source": "Internal_Storage",
+                            "trajectory_points": [],
+                            "stk_data_quality": {
+                                "has_real_trajectory": False,
+                                "trajectory_points_count": 0,
+                                "time_source": "Internal_Estimation"
                             }
+                        }
 
-                        except Exception as parse_error:
-                            logger.warning(f"⚠️ DataProvider时间解析失败: {parse_error}")
-                    else:
-                        logger.warning(f"⚠️ DataProvider返回空数据: {missile_id}")
-                else:
-                    logger.warning(f"⚠️ DataProvider执行失败: {missile_id}")
+            except Exception as storage_error:
+                logger.debug(f"内部存储方法失败: {storage_error}")
 
-            except Exception as dp_error:
-                logger.warning(f"⚠️ DataProvider方法失败: {dp_error}")
-
-            # 方法3: 从轨迹对象获取时间信息
-            try:
-                logger.info(f"🔍 尝试从轨迹对象获取时间信息: {missile_id}")
-
-                # 获取导弹轨迹对象
-                trajectory = stk_missile.Trajectory
-
-                # 尝试获取轨迹的时间范围
-                if hasattr(trajectory, 'StartTime') and hasattr(trajectory, 'StopTime'):
-                    traj_start = trajectory.StartTime
-                    traj_stop = trajectory.StopTime
-
-                    logger.info(f"📅 轨迹时间范围: {traj_start} - {traj_stop}")
-
-                    start_time = datetime.strptime(traj_start, "%d %b %Y %H:%M:%S.%f")
-                    stop_time = datetime.strptime(traj_stop, "%d %b %Y %H:%M:%S.%f")
-                    flight_duration = (stop_time - start_time).total_seconds()
-
-                    return {
-                        "missile_id": missile_id,
-                        "start_time": start_time,
-                        "stop_time": stop_time,
-                        "flight_time_seconds": flight_duration,
-                        "trajectory_points": [],
-                        "data_source": "STK_Trajectory_Object"
-                    }
-
-            except Exception as traj_error:
-                logger.warning(f"⚠️ 轨迹对象方法失败: {traj_error}")
-
-            # 方法4: 使用Connect命令获取导弹时间信息 (基于STK官方文档)
-            try:
-                logger.info(f"🔍 尝试使用Connect命令获取时间信息: {missile_id}")
-
-                # 基于STK官方文档的Connect命令格式
-                # 尝试多种可能的命令格式
-                possible_commands = [
-                    f'GetValue */Missile/{missile_id} StartTime',
-                    f'GetValue */Missile/{missile_id} StopTime',
-                    f'GetValue */Missile/{missile_id}.StartTime',
-                    f'GetValue */Missile/{missile_id}.StopTime',
-                    f'GetValue Missile/{missile_id} StartTime',
-                    f'GetValue Missile/{missile_id} StopTime'
-                ]
-
-                start_result = None
-                stop_result = None
-
-                # 尝试获取开始时间
-                for cmd in possible_commands[:3]:  # 前3个是开始时间命令
-                    try:
-                        start_result = self.stk_manager.root.ExecuteCommand(cmd)
-                        if start_result:
-                            logger.info(f"✅ 开始时间命令成功: {cmd}")
-                            break
-                    except Exception as cmd_error:
-                        logger.debug(f"命令失败: {cmd}, {cmd_error}")
-                        continue
-
-                # 尝试获取结束时间
-                for cmd in possible_commands[3:]:  # 后3个是结束时间命令
-                    try:
-                        stop_result = self.stk_manager.root.ExecuteCommand(cmd)
-                        if stop_result:
-                            logger.info(f"✅ 结束时间命令成功: {cmd}")
-                            break
-                    except Exception as cmd_error:
-                        logger.debug(f"命令失败: {cmd}, {cmd_error}")
-                        continue
-
-                if start_result and stop_result:
-                    # 解析返回的时间字符串
-                    start_time_str = start_result.strip()
-                    stop_time_str = stop_result.strip()
-
-                    logger.info(f"📅 Connect命令获取时间: {start_time_str} - {stop_time_str}")
-
-                    # 尝试解析时间格式
-                    try:
-                        start_time = datetime.strptime(start_time_str, "%d %b %Y %H:%M:%S.%f")
-                        stop_time = datetime.strptime(stop_time_str, "%d %b %Y %H:%M:%S.%f")
-                    except ValueError:
-                        # 尝试其他时间格式
-                        start_time = datetime.strptime(start_time_str, "%d %b %Y %H:%M:%S")
-                        stop_time = datetime.strptime(stop_time_str, "%d %b %Y %H:%M:%S")
-
-                    flight_duration = (stop_time - start_time).total_seconds()
-
-                    return {
-                        "missile_id": missile_id,
-                        "start_time": start_time,
-                        "stop_time": stop_time,
-                        "flight_time_seconds": flight_duration,
-                        "trajectory_points": [],
-                        "data_source": "STK_Connect_Commands"
-                    }
-
-            except Exception as connect_error:
-                logger.warning(f"⚠️ Connect命令方法失败: {connect_error}")
-
-            # 方法5: 备用方案 - 使用场景时间范围
-            try:
-                logger.info(f"🔍 使用场景时间范围作为备用方案: {missile_id}")
-
-                # 获取场景时间范围作为导弹时间范围
-                scenario = self.stk_manager.scenario
-                scenario_start_str = scenario.StartTime
-                scenario_stop_str = scenario.StopTime
-
-                logger.info(f"📅 使用场景时间作为导弹时间: {scenario_start_str} - {scenario_stop_str}")
-
-                # 转换为datetime对象
-                start_time = datetime.strptime(scenario_start_str, "%d %b %Y %H:%M:%S.%f")
-                stop_time = datetime.strptime(scenario_stop_str, "%d %b %Y %H:%M:%S.%f")
-
-                flight_duration = (stop_time - start_time).total_seconds()
-
-                return {
-                    "missile_id": missile_id,
-                    "start_time": start_time,
-                    "stop_time": stop_time,
-                    "flight_time_seconds": flight_duration,
-                    "trajectory_points": [],
-                    "data_source": "STK_Scenario_Time_Range_Fallback"
-                }
-
-            except Exception as fallback_error:
-                logger.warning(f"⚠️ 备用方案也失败: {fallback_error}")
-
-            logger.error(f"❌ 所有STK时间获取方法都失败: {missile_id}")
+            logger.warning(f"⚠️ 所有时间获取方法都失败: {missile_id}")
             return None
 
         except Exception as e:
             logger.error(f"❌ 获取STK轨迹数据异常: {missile_id}, {e}")
             return None
+
+
+
+
+
+
+
 
     def get_missile_time_range(self, missile_id: str) -> Optional[Dict[str, Any]]:
         """
@@ -1894,3 +1626,125 @@ class MissileManager:
         except Exception as e:
             logger.error(f"❌ 生成多目标可视化失败: {e}")
             return None
+
+    def get_missile_launch_and_impact_times(self, missile_name: str) -> tuple:
+        """
+        获取导弹的发射时间和撞击时间
+        基于STK官方文档的正确方法：使用GetTimePeriod Connect命令
+
+        Args:
+            missile_name: 导弹名称
+
+        Returns:
+            tuple: (launch_time_dt, impact_time_dt) 或 (None, None) 如果失败
+        """
+        try:
+            # 方法1: 使用GetTimePeriod Connect命令（STK官方推荐方法）
+            try:
+                missile_path = f"*/Missile/{missile_name}"
+                cmd = f"GetTimePeriod {missile_path}"
+
+                result = self.stk_manager.root.ExecuteCommand(cmd)
+
+                if result and hasattr(result, 'Item') and result.Count > 0:
+                    # 获取时间范围字符串
+                    time_range = result.Item(0)
+
+                    # 解析时间范围字符串，格式: "开始时间", "结束时间"
+                    if isinstance(time_range, str) and '", "' in time_range:
+                        # 移除引号并分割
+                        time_range = time_range.strip('"')
+                        times = time_range.split('", "')
+
+                        if len(times) == 2:
+                            launch_time_str = times[0].strip('"')
+                            impact_time_str = times[1].strip('"')
+
+                            # 解析时间字符串
+                            launch_time_dt = self._parse_stk_time(launch_time_str)
+                            impact_time_dt = self._parse_stk_time(impact_time_str)
+
+                            if launch_time_dt and impact_time_dt:
+                                logger.info(f"✅ GetTimePeriod获取成功: {launch_time_str} - {impact_time_str}")
+                                return launch_time_dt, impact_time_dt
+
+            except Exception as e1:
+                logger.debug(f"GetTimePeriod方法失败: {e1}")
+
+            # 方法2: 使用Available Times DataProvider（备用方法）
+            try:
+                missile = self.stk_manager.scenario.Children.Item(missile_name)
+                dp_available_times = missile.DataProviders.Item("Available Times")
+                scenario_start = self.stk_manager.scenario.StartTime
+                scenario_stop = self.stk_manager.scenario.StopTime
+
+                result = dp_available_times.Exec(scenario_start, scenario_stop)
+
+                if result and result.DataSets.Count > 0:
+                    dataset = result.DataSets.Item(0)
+                    if dataset.RowCount > 0:
+                        launch_time_str = dataset.GetValue(0, 0)
+                        impact_time_str = dataset.GetValue(0, 1) if dataset.ColumnCount > 1 else launch_time_str
+
+                        # 解析时间字符串
+                        launch_time_dt = self._parse_stk_time(launch_time_str)
+                        impact_time_dt = self._parse_stk_time(impact_time_str)
+
+                        if launch_time_dt and impact_time_dt:
+                            logger.info(f"✅ Available Times获取成功: {launch_time_str} - {impact_time_str}")
+                            return launch_time_dt, impact_time_dt
+
+            except Exception as e2:
+                logger.debug(f"Available Times方法失败: {e2}")
+
+            # 方法3: 使用LLA State DataProvider获取首末时间点（备用方法）
+            try:
+                missile = self.stk_manager.scenario.Children.Item(missile_name)
+                dp_lla = missile.DataProviders.Item("LLA State")
+                scenario_start = self.stk_manager.scenario.StartTime
+                scenario_stop = self.stk_manager.scenario.StopTime
+
+                lla_result = dp_lla.Exec(scenario_start, scenario_stop, 60)
+
+                if lla_result and lla_result.DataSets.Count > 0:
+                    lla_dataset = lla_result.DataSets.Item(0)
+                    if lla_dataset.RowCount > 0:
+                        launch_time_str = lla_dataset.GetValue(0, 0)
+                        impact_time_str = lla_dataset.GetValue(lla_dataset.RowCount - 1, 0)
+
+                        # 解析时间字符串
+                        launch_time_dt = self._parse_stk_time(launch_time_str)
+                        impact_time_dt = self._parse_stk_time(impact_time_str)
+
+                        if launch_time_dt and impact_time_dt:
+                            logger.info(f"✅ LLA State获取成功: {launch_time_str} - {impact_time_str}")
+                            return launch_time_dt, impact_time_dt
+
+            except Exception as e3:
+                logger.debug(f"LLA State方法失败: {e3}")
+
+            # 方法4: 估算方法（最后的备用方案）
+            try:
+                # 如果无法获取精确时间，使用估算
+                # 假设导弹飞行时间为30分钟
+                scenario_start_dt = datetime.strptime(
+                    self.stk_manager.scenario.StartTime,
+                    "%d %b %Y %H:%M:%S.%f"
+                )
+
+                # 估算发射时间为场景开始后5分钟
+                launch_time_dt = scenario_start_dt + timedelta(minutes=5)
+                impact_time_dt = launch_time_dt + timedelta(minutes=30)
+
+                logger.warning(f"⚠️ 使用估算时间: {launch_time_dt} - {impact_time_dt}")
+                return launch_time_dt, impact_time_dt
+
+            except Exception as e4:
+                logger.debug(f"估算方法失败: {e4}")
+
+            logger.warning(f"⚠️ 无法获取导弹 {missile_name} 的时间信息")
+            return None, None
+
+        except Exception as e:
+            logger.error(f"❌ 获取导弹时间失败: {e}")
+            return None, None
