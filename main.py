@@ -207,8 +207,9 @@ class STKDataCollectionSystem:
             # 获取导弹配置
             missile_config = self.config_manager.get_missile_config()
 
-            # 创建2-3个测试导弹目标
-            initial_missile_count = 3
+            # 创建测试导弹目标
+            system_config = self.config_manager.get_system_config()
+            initial_missile_count = system_config["testing"]["initial_missile_count"]
             logger.info(f"📊 计划创建 {initial_missile_count} 个测试导弹目标")
 
             success_count = 0
@@ -349,36 +350,36 @@ class STKDataCollectionSystem:
             return False
     
     async def _data_collection_loop(self):
-        """数据采集主循环 - 使用1秒时间窗口策略"""
+        """数据采集主循环 - 使用固定仿真场景时间范围"""
         try:
             logger.info("📊 开始数据采集循环...")
-            logger.info("🕐 采集策略: 动态设置STK场景时间窗口(1秒间隔)进行精确数据采集")
+            logger.info("🕐 采集策略: 使用固定的仿真场景时间范围进行数据采集")
 
             missile_config = self.config_manager.get_missile_config()
             max_concurrent = missile_config.get("max_concurrent_missiles", 5)
 
             collection_count = 0
 
-            while not self.time_manager.is_simulation_finished():
+            while not self.time_manager.is_simulation_finished() and not self.time_manager.is_collection_finished():
                 # 获取下一次采集时间
                 next_collection_time = self.time_manager.get_next_collection_time()
 
                 collection_count += 1
-                logger.info(f"⏰ 第{collection_count}次数据采集: {next_collection_time}")
-                logger.info(f"🎯 时间窗口策略: {next_collection_time} -> {next_collection_time + timedelta(seconds=1)}")
+                # 移除旧的日志，新的详细日志在data_collector中输出
+                logger.info(f"🎯 采集策略: 使用固定场景时间范围，当前采集时间点: {next_collection_time}")
 
                 # 数据采集前进行导弹管理
                 await self._manage_missiles_before_collection()
 
-                # 执行数据采集 - 使用1秒时间窗口
+                # 执行数据采集 - 使用固定场景时间范围
                 data_snapshot = self.data_collector.collect_data_at_time(next_collection_time)
 
                 if data_snapshot:
                     progress = self.time_manager.get_simulation_progress()
-                    stk_window_set = data_snapshot.get("metadata", {}).get("stk_time_window_set", False)
-                    window_status = "✅ STK时间窗口设置成功" if stk_window_set else "⚠️ STK时间窗口设置失败"
+                    scenario_time_fixed = data_snapshot.get("metadata", {}).get("scenario_time_fixed", False)
+                    time_status = "✅ 使用固定场景时间范围" if scenario_time_fixed else "⚠️ 场景时间配置异常"
 
-                    logger.info(f"📊 数据采集成功: 进度 {progress:.1f}%, {window_status}")
+                    logger.info(f"📊 数据采集成功: 进度 {progress:.1f}%, {time_status}")
                     logger.info(f"📈 采集数据: {len(data_snapshot.get('satellites', []))}颗卫星, "
                                f"{len(data_snapshot.get('missiles', []))}个导弹, "
                                f"{len(data_snapshot.get('visibility', []))}个可见性记录")
@@ -396,7 +397,9 @@ class STKDataCollectionSystem:
                 self.time_manager.advance_simulation_time(next_collection_time)
 
                 # 短暂延迟以确保STK处理完成
-                await asyncio.sleep(0.2)
+                system_config = self.config_manager.get_system_config()
+                delay = system_config["delays"]["collection_loop"]
+                await asyncio.sleep(delay)
 
             # 保存最后的数据
             final_file = self.data_collector.save_collected_data()
@@ -405,8 +408,21 @@ class STKDataCollectionSystem:
 
             # 输出采集摘要
             summary = self.data_collector.get_collection_summary()
+            progress = self.time_manager.get_collection_progress()
+
+            logger.info("=" * 80)
+            logger.info("🎉 【数据采集任务完成】")
             logger.info(f"📈 数据采集摘要: {summary}")
+            logger.info(f"📊 最终进度: {progress['current_count']}/{progress['total_count']} ({progress['progress_percentage']}%)")
             logger.info(f"🏁 数据采集循环完成，共进行{collection_count}次采集")
+
+            # 检查完成原因
+            if self.time_manager.is_collection_finished():
+                logger.info("✅ 完成原因: 达到目标采集次数")
+            elif self.time_manager.is_simulation_finished():
+                logger.info("⏰ 完成原因: 仿真时间结束")
+
+            logger.info("=" * 80)
 
         except Exception as e:
             logger.error(f"❌ 数据采集循环异常: {e}")
@@ -422,12 +438,14 @@ class STKDataCollectionSystem:
 
             logger.info(f"📅 仿真时间范围: {simulation_start} - {simulation_end}")
 
-            # 执行导弹数量管理（5-20颗导弹）
+            # 执行导弹数量管理
+            system_config = self.config_manager.get_system_config()
+            mgmt_range = system_config["missile_management_range"]
             management_result = self.missile_manager.manage_missile_count(
                 simulation_start=simulation_start,
                 simulation_end=simulation_end,
-                target_min=5,
-                target_max=20
+                target_min=mgmt_range["target_min"],
+                target_max=mgmt_range["target_max"]
             )
 
             if management_result.get("management_success", False):
@@ -458,8 +476,10 @@ class STKDataCollectionSystem:
             current_count = len(self.active_missiles)
             
             if current_count < max_concurrent:
-                # 随机决定是否添加导弹（30%概率）
-                if random.random() < 0.3:
+                # 随机决定是否添加导弹
+                system_config = self.config_manager.get_system_config()
+                add_probability = system_config["testing"]["missile_add_probability"]
+                if random.random() < add_probability:
                     await self._add_random_missile()
                     
         except Exception as e:
@@ -522,8 +542,10 @@ class STKDataCollectionSystem:
             for missile_id, missile_info in self.active_missiles.items():
                 launch_time = missile_info.get("launch_time")
                 if isinstance(launch_time, datetime):
-                    # 假设导弹飞行时间为30分钟
-                    impact_time = launch_time + timedelta(minutes=30)
+                    # 使用配置的导弹飞行时间
+                    missile_mgmt_config = self.config_manager.get_missile_management_config()
+                    flight_minutes = missile_mgmt_config["flight_time"]["default_minutes"]
+                    impact_time = launch_time + timedelta(minutes=flight_minutes)
                     
                     if current_time > impact_time:
                         expired_missiles.append(missile_id)

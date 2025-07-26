@@ -155,6 +155,69 @@ class ConfigManager:
             "midcourse_altitude_threshold": 100,
             "atomic_task_duration": 300
         })
+
+    def get_physics_config(self) -> Dict[str, Any]:
+        """获取物理常数配置"""
+        return self.config.get("physics", {
+            "earth_radius": 6371
+        })
+
+    def get_visibility_config(self) -> Dict[str, Any]:
+        """获取可见性配置"""
+        return self.config.get("visibility", {
+            "random_windows": {
+                "count_range": [1, 3],
+                "start_offset_range": [300, 900],
+                "duration_range": [180, 600],
+                "interval_multiplier": 600
+            },
+            "access_constraints": {
+                "min_altitude": 20.0,
+                "sun_elevation_min": -10.0
+            },
+            "cache": {
+                "timeout": 300
+            }
+        })
+
+    def get_missile_management_config(self) -> Dict[str, Any]:
+        """获取导弹管理配置"""
+        return self.config.get("missile_management", {
+            "position_generation": {
+                "min_distance_deg": 10,
+                "max_attempts": 10,
+                "id_range": [1000, 9999]
+            },
+            "flight_time": {
+                "default_minutes": 30
+            }
+        })
+
+    def get_data_simulation_config(self) -> Dict[str, Any]:
+        """获取数据模拟配置"""
+        return self.config.get("data_simulation", {
+            "payload_status": {
+                "power_consumption": 80.0,
+                "temperature": 25.0,
+                "operational_default": True
+            }
+        })
+
+    def get_system_config(self) -> Dict[str, Any]:
+        """获取系统配置"""
+        return self.config.get("system", {
+            "testing": {
+                "initial_missile_count": 3,
+                "missile_add_probability": 0.3
+            },
+            "missile_management_range": {
+                "target_min": 5,
+                "target_max": 20
+            },
+            "delays": {
+                "collection_loop": 0.2
+            }
+        })
     
     def update_config(self, section: str, new_config: Dict[str, Any]):
         """更新配置"""

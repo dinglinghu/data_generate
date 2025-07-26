@@ -28,6 +28,10 @@ class MissileManager:
         # 获取中段高度阈值配置
         task_config = self.config_manager.get_task_planning_config()
         self.midcourse_altitude_threshold = task_config.get('midcourse_altitude_threshold', 100)  # 默认100km
+
+        # 获取导弹管理配置
+        self.missile_mgmt_config = self.config_manager.get_missile_management_config()
+
         logger.info(f"导弹管理器初始化完成，中段高度阈值: {self.midcourse_altitude_threshold}km")
         
     def add_missile_target(self, missile_id: str, launch_position: Dict[str, float], 
@@ -1174,7 +1178,7 @@ class MissileManager:
             return {"requested_removals": 0, "successful_removals": 0, "failed_removals": 0, "failed_missile_ids": []}
 
     def manage_missile_count(self, simulation_start: datetime, simulation_end: datetime,
-                           target_min: int = 5, target_max: int = 20) -> Dict[str, Any]:
+                           target_min: int = 5, target_max: int = 6) -> Dict[str, Any]:
         """
         管理导弹数量，确保在指定范围内
 
@@ -1276,7 +1280,8 @@ class MissileManager:
             import random
 
             # 生成导弹ID
-            missile_id = f"GlobalThreat_{sequence:03d}_{random.randint(1000, 9999)}"
+            id_range = self.missile_mgmt_config["position_generation"]["id_range"]
+            missile_id = f"GlobalThreat_{sequence:03d}_{random.randint(*id_range)}"
 
             # 全球随机发射位置
             launch_position = {
@@ -1286,8 +1291,9 @@ class MissileManager:
             }
 
             # 全球随机目标位置（确保与发射位置有一定距离）
-            min_distance_deg = 10  # 最小距离10度
-            max_attempts = 10
+            pos_config = self.missile_mgmt_config["position_generation"]
+            min_distance_deg = pos_config["min_distance_deg"]
+            max_attempts = pos_config["max_attempts"]
 
             for attempt in range(max_attempts):
                 target_position = {

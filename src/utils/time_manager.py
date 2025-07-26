@@ -49,6 +49,7 @@ class UnifiedTimeManager:
         data_config = self.config_manager.get_data_collection_config()
         self.collection_interval_range = data_config.get("interval_range", [60, 300])
         self.save_frequency = data_config.get("save_frequency", 10)
+        self.total_collections = data_config.get("total_collections", 50)  # 总采集次数目标
         
         # 导弹配置
         missile_config = self.config_manager.get_missile_config()
@@ -70,6 +71,7 @@ class UnifiedTimeManager:
         logger.info(f"   历元时间: {self.epoch_time}")
         logger.info(f"   数据采集间隔: {self.collection_interval_range}秒")
         logger.info(f"   保存频率: 每{self.save_frequency}次采集保存一次")
+        logger.info(f"   总采集次数目标: {self.total_collections}次")
         logger.info(f"   导弹发射间隔: {self.missile_launch_interval_range}秒")
         
     def get_stk_time_range(self) -> Tuple[str, str, str]:
@@ -138,11 +140,35 @@ class UnifiedTimeManager:
     def is_simulation_finished(self) -> bool:
         """
         检查仿真是否结束
-        
+
         Returns:
             是否结束
         """
         return self.current_simulation_time >= self.end_time
+
+    def is_collection_finished(self) -> bool:
+        """
+        检查数据采集是否完成
+
+        Returns:
+            是否完成
+        """
+        return self.collection_count >= self.total_collections
+
+    def get_collection_progress(self) -> dict:
+        """
+        获取数据采集进度信息
+
+        Returns:
+            包含进度信息的字典
+        """
+        progress_percentage = (self.collection_count / self.total_collections) * 100 if self.total_collections > 0 else 0
+        return {
+            "current_count": self.collection_count,
+            "total_count": self.total_collections,
+            "remaining_count": max(0, self.total_collections - self.collection_count),
+            "progress_percentage": round(progress_percentage, 1)
+        }
     
     def should_save_data(self) -> bool:
         """

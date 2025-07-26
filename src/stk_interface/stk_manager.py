@@ -47,7 +47,27 @@ class STKManager:
         self.scenario_end_time = end_time_str
         self.scenario_epoch_time = epoch_time_str
 
-        self.earth_radius = 6371  # km
+        # 从配置获取物理常数和STK枚举
+        from src.utils.config_manager import get_config_manager
+        config_manager = get_config_manager()
+        physics_config = config_manager.get_physics_config()
+        self.earth_radius = physics_config.get("earth_radius", 6371)  # km
+
+        # STK对象类型和配置
+        stk_config = config_manager.get_stk_config()
+        self.object_types = stk_config.get("object_types", {
+            "satellite": 18, "sensor": 20, "target": 20, "missile": 19
+        })
+        self.propagator_types = stk_config.get("propagator_types", {
+            "j2_perturbation": 1
+        })
+        self.sensor_patterns = stk_config.get("sensor_patterns", {
+            "conic": 0, "custom": 1, "half_power": 2, "omni": 3, "rectangular": 4
+        })
+        self.wait_times = stk_config.get("wait_times", {
+            "object_creation": 2.0, "sensor_creation": 1.0, "constraint_setup": 0.5,
+            "pattern_setup": 0.2, "parameter_setup": 0.1
+        })
         
         # 可见性计算优化
         self.visibility_cache = {}
@@ -405,11 +425,11 @@ class STKManager:
         
         try:
             # 使用COM接口创建卫星对象
-            self.scenario.Children.New(18, satellite_id)  # 18 = eSatellite
+            self.scenario.Children.New(self.object_types["satellite"], satellite_id)
             logger.info(f"使用COM接口创建卫星: {satellite_id}")
-            
+
             # 等待卫星对象完全创建
-            time.sleep(2.0)
+            time.sleep(self.wait_times["object_creation"])
             
             # 遍历Children查找卫星对象，并打印所有对象信息
             logger.info('场景Children对象列表:')
@@ -428,7 +448,7 @@ class STKManager:
             
             # 设置轨道传播器类型为J2摄动
             try:
-                satellite.SetPropagatorType(1)  # 1 = ePropagatorJ2Perturbation
+                satellite.SetPropagatorType(self.propagator_types["j2_perturbation"])
                 logger.info("轨道传播器类型设置成功")
             except Exception as e:
                 logger.error(f"设置传播器类型失败: {e}")
@@ -625,11 +645,11 @@ class STKManager:
             sensor_id = f"{satellite_id}_Payload"
             
             # 使用COM接口创建传感器
-            sensor = satellite.Children.New(20, sensor_id)  # 20 = eSensor
+            sensor = satellite.Children.New(self.object_types["sensor"], sensor_id)
             logger.info(f"使用COM接口创建载荷: {sensor_id}")
-            
+
             # 等待传感器对象完全创建
-            time.sleep(1.0)
+            time.sleep(self.wait_times["sensor_creation"])
             
             try:
                 # 配置载荷参数
@@ -749,12 +769,12 @@ class STKManager:
                 # 方法1: 使用验证成功的SetPatternType(0)方法
                 try:
                     # 设置传感器模式为锥形 - 使用验证成功的方法
-                    sensor.SetPatternType(0)  # 0 = eConic (锥形)
-                    logger.info("✓ 使用SetPatternType(0)设置传感器模式为锥形成功")
+                    sensor.SetPatternType(self.sensor_patterns["conic"])
+                    logger.info("✓ 使用SetPatternType设置传感器模式为锥形成功")
 
                     # 等待设置生效
                     import time
-                    time.sleep(0.2)
+                    time.sleep(self.wait_times["pattern_setup"])
 
                     # 获取Pattern对象并设置参数
                     pattern = sensor.Pattern

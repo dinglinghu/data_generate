@@ -45,7 +45,7 @@ class DataCollector:
     
     def collect_data_at_time(self, collection_time: datetime) -> Dict[str, Any]:
         """
-        在指定时间采集数据 - 通过动态设置STK场景时间范围
+        在指定时间采集数据 - 使用固定的仿真场景时间范围
 
         Args:
             collection_time: 采集时间
@@ -54,30 +54,23 @@ class DataCollector:
             采集的数据
         """
         try:
-            logger.info(f"📊 开始数据采集: {collection_time}")
+            # 获取采集进度信息
+            progress = self.time_manager.get_collection_progress()
 
-            # 设置STK场景时间范围为1秒窗口进行精确数据采集
-            start_time = collection_time
-            end_time = collection_time + timedelta(seconds=1)
+            # 输出明显特征的采集周期开始日志
+            logger.info("=" * 80)
+            logger.info(f"🚀 【数据采集周期 #{progress['current_count'] + 1}】开始")
+            logger.info(f"📊 采集进度: {progress['current_count']}/{progress['total_count']} ({progress['progress_percentage']}%)")
+            logger.info(f"⏰ 采集时间: {collection_time}")
+            logger.info(f"📈 剩余采集: {progress['remaining_count']}次")
+            logger.info("=" * 80)
 
-            logger.info(f"🕐 设置STK场景时间窗口: {start_time} - {end_time}")
-
-            # 动态设置STK场景时间范围
-            success = self._set_stk_scenario_time_window(start_time, end_time)
-            if not success:
-                logger.warning("⚠️ STK场景时间设置失败，使用默认时间进行采集")
-
-            # 推进仿真时间
+            # 推进仿真时间到采集时间点
             self.time_manager.advance_simulation_time(collection_time)
 
-            # 采集数据
+            # 采集数据（使用固定的场景时间范围，不再动态设置）
             data_snapshot = {
                 "collection_time": collection_time.isoformat(),
-                "time_window": {
-                    "start": start_time.isoformat(),
-                    "end": end_time.isoformat(),
-                    "duration_seconds": 1
-                },
                 "simulation_progress": self.time_manager.get_simulation_progress(),
                 "satellites": self._collect_satellite_data(),
                 "missiles": self._collect_missile_data(),
@@ -86,15 +79,21 @@ class DataCollector:
                     "collection_count": self.time_manager.collection_count,
                     "stk_connected": self.stk_manager.is_connected,
                     "constellation_info": self.constellation_manager.get_constellation_info(),
-                    "stk_time_window_set": success
+                    "scenario_time_fixed": True  # 标记使用固定场景时间
                 }
             }
 
             # 添加到数据列表
             self.collected_data.append(data_snapshot)
 
-            logger.info(f"✅ 数据采集完成: {len(data_snapshot['satellites'])}颗卫星, "
+            # 获取更新后的进度信息
+            progress = self.time_manager.get_collection_progress()
+
+            logger.info(f"✅ 【数据采集周期 #{progress['current_count']}】完成")
+            logger.info(f"📊 本次采集: {len(data_snapshot['satellites'])}颗卫星, "
                        f"{len(data_snapshot['missiles'])}个导弹目标")
+            logger.info(f"📈 总体进度: {progress['current_count']}/{progress['total_count']} ({progress['progress_percentage']}%)")
+            logger.info("=" * 80)
 
             return data_snapshot
 
@@ -102,58 +101,7 @@ class DataCollector:
             logger.error(f"❌ 数据采集失败: {e}")
             return {}
 
-    def _set_stk_scenario_time_window(self, start_time: datetime, end_time: datetime) -> bool:
-        """
-        动态设置STK场景时间窗口
 
-        Args:
-            start_time: 窗口开始时间
-            end_time: 窗口结束时间
-
-        Returns:
-            设置是否成功
-        """
-        try:
-            # 格式化时间为STK格式
-            start_time_stk = start_time.strftime("%d %b %Y %H:%M:%S.000")
-            end_time_stk = end_time.strftime("%d %b %Y %H:%M:%S.000")
-
-            logger.info(f"🕐 设置STK场景时间: {start_time_stk} - {end_time_stk}")
-
-            # 方法1: 使用STK场景对象直接设置时间
-            try:
-                scenario = self.stk_manager.scenario
-                scenario.SetTimePeriod(start_time_stk, end_time_stk)
-                logger.info("✅ 使用场景对象设置时间成功")
-                return True
-            except Exception as scenario_error:
-                logger.warning(f"⚠️ 场景对象设置时间失败: {scenario_error}")
-
-            # 方法2: 使用Connect命令设置时间
-            try:
-                start_cmd = f'SetAnimation * TimePeriod "{start_time_stk}" "{end_time_stk}"'
-                self.stk_manager.stk_root.ExecuteCommand(start_cmd)
-                logger.info("✅ 使用Connect命令设置时间成功")
-                return True
-            except Exception as cmd_error:
-                logger.warning(f"⚠️ Connect命令设置时间失败: {cmd_error}")
-
-            # 方法3: 使用场景属性设置
-            try:
-                scenario = self.stk_manager.scenario
-                scenario.StartTime = start_time_stk
-                scenario.StopTime = end_time_stk
-                logger.info("✅ 使用场景属性设置时间成功")
-                return True
-            except Exception as attr_error:
-                logger.warning(f"⚠️ 场景属性设置时间失败: {attr_error}")
-
-            logger.error("❌ 所有STK时间设置方法都失败")
-            return False
-
-        except Exception as e:
-            logger.error(f"❌ 设置STK场景时间窗口异常: {e}")
-            return False
 
     def _collect_satellite_data(self) -> List[Dict[str, Any]]:
         """采集所有卫星的数据"""
@@ -261,15 +209,17 @@ class DataCollector:
         """获取载荷状态"""
         try:
             payload_config = self.config_manager.get_payload_config()
-            
+            data_sim_config = self.config_manager.get_data_simulation_config()
+            payload_sim = data_sim_config["payload_status"]
+
             # 基本载荷状态信息
             payload_status = {
                 "type": payload_config.get("type", "Optical_Sensor"),
                 "mounting": payload_config.get("mounting", "Nadir"),
                 "sensor_pattern": payload_config.get("sensor_pattern", "Conic"),
-                "operational": True,  # 假设载荷正常工作
-                "power_consumption": 80.0,  # 模拟功耗数据
-                "temperature": 25.0,  # 模拟温度数据
+                "operational": payload_sim.get("operational_default", True),
+                "power_consumption": payload_sim.get("power_consumption", 80.0),
+                "temperature": payload_sim.get("temperature", 25.0),
                 "pointing": payload_config.get("pointing", {}),
                 "constraints": payload_config.get("constraints_range", {})
             }

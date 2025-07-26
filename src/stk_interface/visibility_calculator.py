@@ -15,7 +15,12 @@ class VisibilityCalculator:
     def __init__(self, stk_manager):
         """初始化可见性计算器"""
         self.stk_manager = stk_manager
-        
+
+        # 获取配置
+        from src.utils.config_manager import get_config_manager
+        config_manager = get_config_manager()
+        self.visibility_config = config_manager.get_visibility_config()
+
         logger.info("🔍 可见性计算器初始化")
     
     def calculate_satellite_to_missile_access(self, satellite_id: str, missile_id: str) -> Dict[str, Any]:
@@ -427,12 +432,12 @@ class VisibilityCalculator:
             # 基于STK官方代码: Add and configure an altitude access constraint
             altitude_constraint = access_constraints.AddConstraint(2)  # eCstrAltitude
             altitude_constraint.EnableMin = True
-            altitude_constraint.Min = 20.0  # km - 最小高度约束
+            altitude_constraint.Min = self.visibility_config["access_constraints"]["min_altitude"]  # km - 最小高度约束
 
             # 基于STK官方代码: Add and configure a sun elevation angle access constraint
             sun_elevation = access_constraints.AddConstraint(58)  # eCstrSunElevationAngle
             sun_elevation.EnableMin = True
-            sun_elevation.Min = -10.0  # 度 - 避免太阳干扰
+            sun_elevation.Min = self.visibility_config["access_constraints"]["sun_elevation_min"]  # 度 - 避免太阳干扰
 
             logger.debug("   ✅ STK访问约束配置完成")
 
@@ -598,8 +603,9 @@ class VisibilityCalculator:
         has_access = random.choice([True, False])
 
         if has_access:
-            # 生成1-3个随机访问窗口
-            num_windows = random.randint(1, 3)
+            # 生成随机访问窗口
+            window_config = self.visibility_config["random_windows"]
+            num_windows = random.randint(*window_config["count_range"])
             intervals = []
 
             # 使用仿真开始时间而不是系统时间
@@ -608,8 +614,11 @@ class VisibilityCalculator:
             base_time = time_manager.start_time
 
             for i in range(num_windows):
-                start_offset = random.randint(300 + i*600, 900 + i*600)  # 5-15分钟后开始
-                duration = random.randint(180, 600)  # 3-10分钟持续时间
+                start_offset = random.randint(
+                    window_config["start_offset_range"][0] + i * window_config["interval_multiplier"],
+                    window_config["start_offset_range"][1] + i * window_config["interval_multiplier"]
+                )
+                duration = random.randint(*window_config["duration_range"])
 
                 start_time = base_time + timedelta(seconds=start_offset)
                 stop_time = start_time + timedelta(seconds=duration)

@@ -59,20 +59,21 @@ missile:
   
   # 导弹轨迹参数配置
   trajectory_params:
-    max_altitude_range: [300, 1500]  # 最大高度范围(km)
-    flight_time_range: [600, 1800]   # 飞行时间范围(秒)
+    max_altitude_range: [1000, 1800]  # 最大高度范围(km)
+    flight_time_range: [1800, 3600]   # 飞行时间范围(秒)
 
 # 仿真时间配置
 simulation:
-  start_time: "2025/07/25 04:00:00"  # 仿真开始时间
-  end_time: "2025/07/25 08:00:00"    # 仿真结束时间
-  epoch_time: "2025/07/25 04:00:00"  # 历元时间
+  start_time: "2025/07/25 00:00:00"  # 仿真开始时间
+  end_time: "2025/07/26 00:00:00"    # 仿真结束时间
+  epoch_time: "2025/07/25 00:00:00"  # 历元时间
   
   # 数据采集配置
   data_collection:
     interval_range: [60, 300]   # 数据采集时间间隔范围(秒)
-    save_frequency: 10          # 采集10次数据保存一次
+    save_frequency: 2          # 采集10次数据保存一次
     output_format: "json"       # 数据保存格式
+    total_collections: 50       # 总采集次数目标
 
 # 任务规划配置
 task_planning:
@@ -85,6 +86,91 @@ stk:
   existing_project_wait_time: 5      # 现有项目检测等待时间(秒)
   max_connections: 5                 # 最大连接数
   connection_timeout: 30             # 连接超时时间(秒)
+
+  # STK对象类型枚举
+  object_types:
+    satellite: 18                    # eSatellite
+    sensor: 20                       # eSensor
+    target: 20                       # eTarget
+    missile: 19                      # eMissile
+
+  # STK传播器类型
+  propagator_types:
+    j2_perturbation: 1               # ePropagatorJ2Perturbation
+
+  # STK传感器模式
+  sensor_patterns:
+    conic: 0                         # eConic锥形
+    custom: 1                        # eCustom
+    half_power: 2                    # eHalfPower
+    omni: 3                          # eOmni
+    rectangular: 4                   # eRectangular
+
+  # STK等待时间配置(秒)
+  wait_times:
+    object_creation: 2.0             # 对象创建等待时间
+    sensor_creation: 1.0             # 传感器创建等待时间
+    constraint_setup: 0.5            # 约束设置等待时间
+    pattern_setup: 0.2               # 模式设置等待时间
+    parameter_setup: 0.1             # 参数设置等待时间
+
+# 物理常数配置
+physics:
+  earth_radius: 6371                 # 地球半径(km)
+
+# 可见性计算配置
+visibility:
+  # 随机访问窗口配置
+  random_windows:
+    count_range: [1, 3]              # 随机访问窗口数量范围
+    start_offset_range: [300, 900]   # 开始时间偏移范围(秒)
+    duration_range: [180, 600]       # 持续时间范围(秒)
+    interval_multiplier: 600         # 间隔乘数(秒)
+
+  # STK访问约束
+  access_constraints:
+    min_altitude: 20.0               # 最小高度约束(km)
+    sun_elevation_min: -10.0         # 太阳高度角最小值(度)
+
+  # 缓存配置
+  cache:
+    timeout: 300                     # 缓存超时时间(秒)
+
+# 导弹管理配置
+missile_management:
+  # 位置生成配置
+  position_generation:
+    min_distance_deg: 10             # 发射点与目标点最小距离(度)
+    max_attempts: 10                 # 最大尝试次数
+    id_range: [1000, 9999]          # 随机ID范围
+
+  # 飞行时间配置
+  flight_time:
+    default_minutes: 30              # 默认飞行时间(分钟)
+
+# 数据采集模拟配置
+data_simulation:
+  # 载荷状态模拟
+  payload_status:
+    power_consumption: 80.0          # 模拟功耗(W)
+    temperature: 25.0                # 模拟温度(°C)
+    operational_default: true        # 默认运行状态
+
+# 系统运行配置
+system:
+  # 测试配置
+  testing:
+    initial_missile_count: 3         # 初始测试导弹数量
+    missile_add_probability: 0.3     # 随机添加导弹概率
+
+  # 导弹管理范围
+  missile_management_range:
+    target_min: 5                    # 最小导弹数量
+    target_max: 8                   # 最大导弹数量
+
+  # 系统延迟配置
+  delays:
+    collection_loop: 0.2             # 数据采集循环延迟(秒)
 
 # 输出配置
 output:
