@@ -1,0 +1,93 @@
+# STK卫星星座数据采集系统配置文件
+# 严格按照ADK官网文档要求进行配置
+
+# Walker星座配置
+constellation:
+  type: "Walker"
+  planes: 3                    # 轨道面数量
+  satellites_per_plane: 3      # 每个轨道面的卫星数量
+  total_satellites: 9          # 总卫星数量
+  
+  # 参考卫星轨道参数（Walker星座首颗卫星参数）
+  reference_satellite:
+    altitude: 1800             # 轨道高度(km)
+    inclination: 51.856        # 轨道倾角(度)
+    eccentricity: 0.0          # 轨道偏心率
+    arg_of_perigee: 12         # 近地点幅角(度)
+    raan_offset: 24            # 升交点赤经偏移(度)
+    mean_anomaly_offset: 180   # 平近点角偏移(度)
+
+# 载荷参数配置
+payload:
+  type: "Optical_Sensor"
+  mounting: "Nadir"            # 载荷安装方向：天底方向
+  
+  # 传感器视场配置 - STK圆锥视场参数
+  sensor_pattern: "Conic"      # 传感器模式：锥形
+  inner_cone_half_angle: 66.1  # 内锥半角(度) - STK约束: 0.0° - 90.0°
+  outer_cone_half_angle: 85.0  # 外锥半角(度) - STK约束: 0.0° - 180.0°
+  clockwise_angle_min: 0.0     # 顺时针旋转角最小值(度)
+  clockwise_angle_max: 360.0   # 顺时针旋转角最大值(度)
+  
+  # 指向参数配置
+  pointing:
+    azimuth: 0.0              # 指向方位角(度)
+    elevation: 90.0           # 指向俯仰角(度)
+  
+  # 传感器约束（导弹跟踪优化版本）
+  constraints_range:
+    min_range: 0              # 最小距离(km)，设为0允许近距离跟踪
+    max_range: 5000           # 最大距离(km)，确保覆盖所有可能距离
+    active: true              # 约束激活状态
+
+# 导弹目标配置
+missile:
+  max_concurrent_missiles: 5   # 场景中同时在飞行的导弹数量阈值
+  launch_interval_range: [300, 1800]  # 导弹发射时间间隔范围(秒)
+  
+  # 全球随机发射位置配置
+  global_launch_positions:
+    lat_range: [-60, 60]      # 纬度范围(度)
+    lon_range: [-180, 180]    # 经度范围(度)
+    alt_range: [0, 100]       # 高度范围(m)
+  
+  # 全球随机目标位置配置
+  global_target_positions:
+    lat_range: [-60, 60]      # 纬度范围(度)
+    lon_range: [-180, 180]    # 经度范围(度)
+    alt_range: [0, 100]       # 高度范围(m)
+  
+  # 导弹轨迹参数配置
+  trajectory_params:
+    max_altitude_range: [300, 1500]  # 最大高度范围(km)
+    flight_time_range: [600, 1800]   # 飞行时间范围(秒)
+
+# 仿真时间配置
+simulation:
+  start_time: "2025/07/25 04:00:00"  # 仿真开始时间
+  end_time: "2025/07/25 08:00:00"    # 仿真结束时间
+  epoch_time: "2025/07/25 04:00:00"  # 历元时间
+  
+  # 数据采集配置
+  data_collection:
+    interval_range: [60, 300]   # 数据采集时间间隔范围(秒)
+    save_frequency: 10          # 采集10次数据保存一次
+    output_format: "json"       # 数据保存格式
+
+# 任务规划配置
+task_planning:
+  midcourse_altitude_threshold: 100  # 中段高度阈值(km)
+  atomic_task_duration: 300          # 原子任务持续时间(秒)
+
+# STK软件配置
+stk:
+  detect_existing_project: true      # 是否检测现有STK项目
+  existing_project_wait_time: 5      # 现有项目检测等待时间(秒)
+  max_connections: 5                 # 最大连接数
+  connection_timeout: 30             # 连接超时时间(秒)
+
+# 输出配置
+output:
+  data_directory: "output/data"      # 数据输出目录
+  log_directory: "output/logs"       # 日志输出目录
+  visualization_directory: "output/visualization"  # 可视化输出目录
