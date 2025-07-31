@@ -1,0 +1,522 @@
+2025-07-31 10:22:01,376 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'D:\\software\\miniconda3\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-07-31 10:22:01,376 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'D:\software\miniconda3\Lib\site-packages\comtypes\gen'
+2025-07-31 10:22:01,491 - __main__ - ERROR - 模块导入失败: No module named 'h5py'
+2025-07-31 10:22:26,457 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'D:\\software\\miniconda3\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-07-31 10:22:26,457 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'D:\software\miniconda3\Lib\site-packages\comtypes\gen'
+2025-07-31 10:22:27,995 - __main__ - INFO - 🚀 RLHF数据采集系统测试启动
+2025-07-31 10:22:27,995 - __main__ - INFO - 🧪 RLHF数据采集系统测试启动...
+2025-07-31 10:22:28,004 - src.utils.config_manager - INFO - ✅ 配置文件加载成功: config/config.yaml
+2025-07-31 10:22:28,008 - src.utils.time_manager - INFO - 🕐 时间管理器初始化完成:
+2025-07-31 10:22:28,008 - src.utils.time_manager - INFO -    仿真时间范围: 2025-07-25 00:00:00 - 2025-07-26 00:00:00
+2025-07-31 10:22:28,008 - src.utils.time_manager - INFO -    历元时间: 2025-07-25 00:00:00
+2025-07-31 10:22:28,009 - src.utils.time_manager - INFO -    数据采集间隔: [60, 300]秒
+2025-07-31 10:22:28,009 - src.utils.time_manager - INFO -    保存频率: 每2次采集保存一次
+2025-07-31 10:22:28,009 - src.utils.time_manager - INFO -    总采集次数目标: 50次
+2025-07-31 10:22:28,009 - src.utils.time_manager - INFO -    导弹发射间隔: [300, 1800]秒
+2025-07-31 10:22:28,009 - __main__ - INFO - ================================================================================
+2025-07-31 10:22:28,009 - __main__ - INFO - 🧪 开始RLHF数据采集系统测试
+2025-07-31 10:22:28,010 - __main__ - INFO - ================================================================================
+2025-07-31 10:22:28,010 - __main__ - INFO - 🔧 开始组件单元测试...
+2025-07-31 10:22:28,010 - __main__ - INFO - 🎯 测试奖励计算器...
+2025-07-31 10:22:28,010 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:22:28,011 - __main__ - ERROR - ❌ 奖励计算器测试失败: 奖励值异常: -0.5
+2025-07-31 10:22:28,011 - __main__ - INFO - 🔍 测试数据质量验证器...
+2025-07-31 10:22:28,011 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:22:28,012 - __main__ - INFO - ✅ 数据质量验证器测试通过: 有效=True, 分数=1.000
+2025-07-31 10:22:28,012 - __main__ - INFO - 🧠 测试专家策略...
+2025-07-31 10:22:28,012 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:22:28,012 - __main__ - INFO - ✅ 专家策略测试通过: 测试了4种策略
+2025-07-31 10:22:28,012 - __main__ - INFO - 🎮 测试动作执行器（模拟模式）...
+2025-07-31 10:22:28,012 - __main__ - INFO - ✅ 动作执行器测试通过（模拟模式）
+2025-07-31 10:22:28,013 - __main__ - INFO - ✅ 组件单元测试完成
+2025-07-31 10:22:28,013 - __main__ - INFO - 🔗 开始集成测试...
+2025-07-31 10:22:28,013 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:22:28,013 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:22:28,014 - src.rlhf_data_collection.rlhf_data_collector - WARNING - ⚠️ 未提供STK管理器，动作执行功能将不可用
+2025-07-31 10:22:28,014 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🤖 RLHF数据采集器初始化完成
+2025-07-31 10:22:28,014 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:22:28,014 - __main__ - ERROR - ❌ 集成测试失败: 'MockDataCollector' object has no attribute 'constellation_manager'
+2025-07-31 10:22:28,014 - __main__ - INFO - 📊 开始数据质量测试...
+2025-07-31 10:22:28,015 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:22:28,015 - __main__ - INFO - ✅ 数据质量测试完成
+2025-07-31 10:22:28,015 - __main__ - INFO - ⚡ 开始性能测试...
+2025-07-31 10:22:28,015 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:22:28,015 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:22:28,016 - src.rlhf_data_collection.rlhf_data_collector - WARNING - ⚠️ 未提供STK管理器，动作执行功能将不可用
+2025-07-31 10:22:28,016 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🤖 RLHF数据采集器初始化完成
+2025-07-31 10:22:28,016 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:22:28,017 - __main__ - ERROR - ❌ 性能测试失败: 'MockDataCollector' object has no attribute 'constellation_manager'
+2025-07-31 10:22:28,017 - __main__ - INFO - 📋 生成测试报告...
+2025-07-31 10:22:28,018 - __main__ - INFO - ================================================================================
+2025-07-31 10:22:28,018 - __main__ - INFO - 📋 测试报告摘要
+2025-07-31 10:22:28,018 - __main__ - INFO - ================================================================================
+2025-07-31 10:22:28,018 - __main__ - INFO - 总测试数: 11
+2025-07-31 10:22:28,018 - __main__ - INFO - 通过测试: 3
+2025-07-31 10:22:28,018 - __main__ - INFO - 失败测试: 8
+2025-07-31 10:22:28,019 - __main__ - INFO - 成功率: 27.27%
+2025-07-31 10:22:28,019 - __main__ - INFO - 详细报告: test_results_rlhf.json
+2025-07-31 10:22:28,019 - __main__ - INFO - ================================================================================
+2025-07-31 10:22:28,019 - __main__ - INFO - ✅ RLHF数据采集系统测试完成
+2025-07-31 10:22:28,019 - __main__ - INFO - ✅ 所有测试完成
+2025-07-31 10:22:28,020 - __main__ - INFO - 🏁 RLHF数据采集系统测试结束
+2025-07-31 10:23:19,935 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'D:\\software\\miniconda3\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-07-31 10:23:19,935 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'D:\software\miniconda3\Lib\site-packages\comtypes\gen'
+2025-07-31 10:23:20,078 - __main__ - INFO - 🚀 RLHF数据采集系统测试启动
+2025-07-31 10:23:20,079 - __main__ - INFO - 🧪 RLHF数据采集系统测试启动...
+2025-07-31 10:23:20,087 - src.utils.config_manager - INFO - ✅ 配置文件加载成功: config/config.yaml
+2025-07-31 10:23:20,090 - src.utils.time_manager - INFO - 🕐 时间管理器初始化完成:
+2025-07-31 10:23:20,090 - src.utils.time_manager - INFO -    仿真时间范围: 2025-07-25 00:00:00 - 2025-07-26 00:00:00
+2025-07-31 10:23:20,090 - src.utils.time_manager - INFO -    历元时间: 2025-07-25 00:00:00
+2025-07-31 10:23:20,090 - src.utils.time_manager - INFO -    数据采集间隔: [60, 300]秒
+2025-07-31 10:23:20,090 - src.utils.time_manager - INFO -    保存频率: 每2次采集保存一次
+2025-07-31 10:23:20,090 - src.utils.time_manager - INFO -    总采集次数目标: 50次
+2025-07-31 10:23:20,090 - src.utils.time_manager - INFO -    导弹发射间隔: [300, 1800]秒
+2025-07-31 10:23:20,090 - __main__ - INFO - ================================================================================
+2025-07-31 10:23:20,090 - __main__ - INFO - 🧪 开始RLHF数据采集系统测试
+2025-07-31 10:23:20,090 - __main__ - INFO - ================================================================================
+2025-07-31 10:23:20,090 - __main__ - INFO - 🔧 开始组件单元测试...
+2025-07-31 10:23:20,091 - __main__ - INFO - 🎯 测试奖励计算器...
+2025-07-31 10:23:20,091 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:23:20,091 - __main__ - INFO - ✅ 奖励计算器测试通过: 奖励=-0.500
+2025-07-31 10:23:20,091 - __main__ - INFO - 🔍 测试数据质量验证器...
+2025-07-31 10:23:20,091 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:23:20,091 - __main__ - INFO - ✅ 数据质量验证器测试通过: 有效=True, 分数=1.000
+2025-07-31 10:23:20,091 - __main__ - INFO - 🧠 测试专家策略...
+2025-07-31 10:23:20,092 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:23:20,092 - __main__ - INFO - ✅ 专家策略测试通过: 测试了4种策略
+2025-07-31 10:23:20,092 - __main__ - INFO - 🎮 测试动作执行器（模拟模式）...
+2025-07-31 10:23:20,093 - __main__ - INFO - ✅ 动作执行器测试通过（模拟模式）
+2025-07-31 10:23:20,093 - __main__ - INFO - ✅ 组件单元测试完成
+2025-07-31 10:23:20,093 - __main__ - INFO - 🔗 开始集成测试...
+2025-07-31 10:23:20,093 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:23:20,093 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:23:20,094 - src.rlhf_data_collection.rlhf_data_collector - WARNING - ⚠️ 未提供STK管理器，动作执行功能将不可用
+2025-07-31 10:23:20,094 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🤖 RLHF数据采集器初始化完成
+2025-07-31 10:23:20,094 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:23:20,094 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🎬 开始新回合: episode_20250731_102320_test_scenario, 场景类型: test_scenario
+2025-07-31 10:23:20,095 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,095 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=1.000, 完成=False
+2025-07-31 10:23:20,095 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,096 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=1.000, 完成=False
+2025-07-31 10:23:20,096 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,096 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=1.000, 完成=False
+2025-07-31 10:23:20,096 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,097 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=1.000, 完成=False
+2025-07-31 10:23:20,097 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,098 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=1.000, 完成=False
+2025-07-31 10:23:20,098 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🏁 回合结束: episode_20250731_102320_test_scenario
+2025-07-31 10:23:20,098 - src.rlhf_data_collection.rlhf_data_collector - INFO -    总奖励: 0.000
+2025-07-31 10:23:20,099 - src.rlhf_data_collection.rlhf_data_collector - INFO -    数据点数: 5
+2025-07-31 10:23:20,099 - src.rlhf_data_collection.rlhf_data_collector - INFO -    任务成功: True
+2025-07-31 10:23:20,099 - __main__ - INFO - ✅ 集成测试通过: 采集了5个数据点
+2025-07-31 10:23:20,099 - __main__ - INFO - 📊 开始数据质量测试...
+2025-07-31 10:23:20,100 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:23:20,100 - __main__ - INFO - ✅ 数据质量测试完成
+2025-07-31 10:23:20,100 - __main__ - INFO - ⚡ 开始性能测试...
+2025-07-31 10:23:20,100 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:23:20,100 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:23:20,100 - src.rlhf_data_collection.rlhf_data_collector - WARNING - ⚠️ 未提供STK管理器，动作执行功能将不可用
+2025-07-31 10:23:20,101 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🤖 RLHF数据采集器初始化完成
+2025-07-31 10:23:20,101 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:23:20,101 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🎬 开始新回合: episode_20250731_102320_performance_test, 场景类型: performance_test
+2025-07-31 10:23:20,101 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,101 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=1.000, 完成=False
+2025-07-31 10:23:20,101 - __main__ - INFO - 性能测试进度: 0/100
+2025-07-31 10:23:20,101 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,102 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,102 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,102 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,102 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,102 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,102 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,102 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,103 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,103 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,103 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,103 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,103 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,103 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,103 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,104 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,104 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,104 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,104 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,104 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,104 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,104 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,104 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,105 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,105 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,105 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,105 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,105 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,105 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,106 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,106 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,106 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,106 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,106 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,107 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,107 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,107 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,107 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,107 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,108 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,108 - __main__ - INFO - 性能测试进度: 20/100
+2025-07-31 10:23:20,108 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,108 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,108 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,109 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,109 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,109 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,109 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,109 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,109 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,110 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,110 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,110 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,110 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,110 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,110 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,110 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,110 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,111 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,111 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,111 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,111 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,111 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,111 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,111 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,112 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,112 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,112 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,112 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,112 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,112 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,113 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,113 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,113 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,113 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,114 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,114 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,114 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,114 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,115 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,115 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,115 - __main__ - INFO - 性能测试进度: 40/100
+2025-07-31 10:23:20,115 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,115 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,115 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,116 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,116 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,116 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,116 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,117 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,117 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,117 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,117 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,117 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,117 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,117 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,118 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,118 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,118 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,119 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,119 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,119 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,119 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,119 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,120 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,120 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,120 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,120 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,120 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,120 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,120 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,121 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,121 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,121 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,121 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,121 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,121 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,121 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,121 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,122 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,122 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,122 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,122 - __main__ - INFO - 性能测试进度: 60/100
+2025-07-31 10:23:20,122 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,123 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,123 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,123 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,123 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,124 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,124 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,124 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,126 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,126 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,126 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,127 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,127 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,127 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,127 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,127 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,127 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,128 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,128 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,128 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,128 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,128 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,128 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,129 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,129 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,129 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,129 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,129 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,129 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,129 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,129 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,130 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,130 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,130 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,130 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,130 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,130 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,130 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,130 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,131 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,131 - __main__ - INFO - 性能测试进度: 80/100
+2025-07-31 10:23:20,131 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,131 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,131 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,131 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,131 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,132 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,132 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,132 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,132 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,133 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,133 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,133 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,133 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,133 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,133 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,134 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,134 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,134 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,134 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,134 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,134 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,134 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,135 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,135 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,135 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,135 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,135 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,135 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,135 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,136 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,136 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,136 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,136 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,137 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,137 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,137 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,137 - src.rlhf_data_collection.rlhf_data_collector - ERROR - 状态向量提取失败: RLHFDataCollector._create_visibility_matrix() takes 2 positional arguments but 4 were given
+2025-07-31 10:23:20,138 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=0.000, 质量分数=0.900, 完成=False
+2025-07-31 10:23:20,138 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🏁 回合结束: episode_20250731_102320_performance_test
+2025-07-31 10:23:20,138 - src.rlhf_data_collection.rlhf_data_collector - INFO -    总奖励: 0.000
+2025-07-31 10:23:20,138 - src.rlhf_data_collection.rlhf_data_collector - INFO -    数据点数: 100
+2025-07-31 10:23:20,138 - src.rlhf_data_collection.rlhf_data_collector - INFO -    任务成功: True
+2025-07-31 10:23:20,138 - __main__ - INFO - ✅ 性能测试完成: 2619.58 数据点/秒
+2025-07-31 10:23:20,139 - __main__ - INFO - 📋 生成测试报告...
+2025-07-31 10:23:20,140 - __main__ - INFO - ================================================================================
+2025-07-31 10:23:20,140 - __main__ - INFO - 📋 测试报告摘要
+2025-07-31 10:23:20,140 - __main__ - INFO - ================================================================================
+2025-07-31 10:23:20,140 - __main__ - INFO - 总测试数: 14
+2025-07-31 10:23:20,140 - __main__ - INFO - 通过测试: 5
+2025-07-31 10:23:20,141 - __main__ - INFO - 失败测试: 9
+2025-07-31 10:23:20,141 - __main__ - INFO - 成功率: 35.71%
+2025-07-31 10:23:20,141 - __main__ - INFO - 详细报告: test_results_rlhf.json
+2025-07-31 10:23:20,141 - __main__ - INFO - ================================================================================
+2025-07-31 10:23:20,141 - __main__ - INFO - ✅ RLHF数据采集系统测试完成
+2025-07-31 10:23:20,141 - __main__ - INFO - ✅ 所有测试完成
+2025-07-31 10:23:20,141 - __main__ - INFO - 🏁 RLHF数据采集系统测试结束
+2025-07-31 10:24:24,329 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'D:\\software\\miniconda3\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-07-31 10:24:24,330 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'D:\software\miniconda3\Lib\site-packages\comtypes\gen'
+2025-07-31 10:24:24,479 - __main__ - INFO - 🚀 RLHF数据采集系统测试启动
+2025-07-31 10:24:24,480 - __main__ - INFO - 🧪 RLHF数据采集系统测试启动...
+2025-07-31 10:24:24,488 - src.utils.config_manager - INFO - ✅ 配置文件加载成功: config/config.yaml
+2025-07-31 10:24:24,491 - src.utils.time_manager - INFO - 🕐 时间管理器初始化完成:
+2025-07-31 10:24:24,491 - src.utils.time_manager - INFO -    仿真时间范围: 2025-07-25 00:00:00 - 2025-07-26 00:00:00
+2025-07-31 10:24:24,491 - src.utils.time_manager - INFO -    历元时间: 2025-07-25 00:00:00
+2025-07-31 10:24:24,491 - src.utils.time_manager - INFO -    数据采集间隔: [60, 300]秒
+2025-07-31 10:24:24,491 - src.utils.time_manager - INFO -    保存频率: 每2次采集保存一次
+2025-07-31 10:24:24,491 - src.utils.time_manager - INFO -    总采集次数目标: 50次
+2025-07-31 10:24:24,491 - src.utils.time_manager - INFO -    导弹发射间隔: [300, 1800]秒
+2025-07-31 10:24:24,491 - __main__ - INFO - ================================================================================
+2025-07-31 10:24:24,491 - __main__ - INFO - 🧪 开始RLHF数据采集系统测试
+2025-07-31 10:24:24,491 - __main__ - INFO - ================================================================================
+2025-07-31 10:24:24,492 - __main__ - INFO - 🔧 开始组件单元测试...
+2025-07-31 10:24:24,492 - __main__ - INFO - 🎯 测试奖励计算器...
+2025-07-31 10:24:24,492 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:24:24,492 - __main__ - INFO - ✅ 奖励计算器测试通过: 奖励=-0.500
+2025-07-31 10:24:24,492 - __main__ - INFO - 🔍 测试数据质量验证器...
+2025-07-31 10:24:24,492 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:24:24,492 - __main__ - INFO - ✅ 数据质量验证器测试通过: 有效=True, 分数=1.000
+2025-07-31 10:24:24,492 - __main__ - INFO - 🧠 测试专家策略...
+2025-07-31 10:24:24,493 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:24:24,493 - __main__ - INFO - ✅ 专家策略测试通过: 测试了4种策略
+2025-07-31 10:24:24,493 - __main__ - INFO - 🎮 测试动作执行器（模拟模式）...
+2025-07-31 10:24:24,493 - __main__ - INFO - ✅ 动作执行器测试通过（模拟模式）
+2025-07-31 10:24:24,494 - __main__ - INFO - ✅ 组件单元测试完成
+2025-07-31 10:24:24,494 - __main__ - INFO - 🔗 开始集成测试...
+2025-07-31 10:24:24,494 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:24:24,494 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:24:24,495 - src.rlhf_data_collection.rlhf_data_collector - WARNING - ⚠️ 未提供STK管理器，动作执行功能将不可用
+2025-07-31 10:24:24,495 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🤖 RLHF数据采集器初始化完成
+2025-07-31 10:24:24,495 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:24:24,495 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🎬 开始新回合: episode_20250731_102424_test_scenario, 场景类型: test_scenario
+2025-07-31 10:24:24,496 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:24:24,496 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:24:24,496 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:24:24,496 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:24:24,497 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:24:24,497 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🏁 回合结束: episode_20250731_102424_test_scenario
+2025-07-31 10:24:24,497 - src.rlhf_data_collection.rlhf_data_collector - INFO -    总奖励: -2.500
+2025-07-31 10:24:24,497 - src.rlhf_data_collection.rlhf_data_collector - INFO -    数据点数: 5
+2025-07-31 10:24:24,497 - src.rlhf_data_collection.rlhf_data_collector - INFO -    任务成功: True
+2025-07-31 10:24:24,497 - __main__ - INFO - ✅ 集成测试通过: 采集了5个数据点
+2025-07-31 10:24:24,497 - __main__ - INFO - 📊 开始数据质量测试...
+2025-07-31 10:24:24,498 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:24:24,498 - __main__ - INFO - ✅ 数据质量测试完成
+2025-07-31 10:24:24,498 - __main__ - INFO - ⚡ 开始性能测试...
+2025-07-31 10:24:24,498 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:24:24,498 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:24:24,499 - src.rlhf_data_collection.rlhf_data_collector - WARNING - ⚠️ 未提供STK管理器，动作执行功能将不可用
+2025-07-31 10:24:24,499 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🤖 RLHF数据采集器初始化完成
+2025-07-31 10:24:24,500 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:24:24,500 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🎬 开始新回合: episode_20250731_102424_performance_test, 场景类型: performance_test
+2025-07-31 10:24:24,501 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:24:24,501 - __main__ - INFO - 性能测试进度: 0/100
+2025-07-31 10:24:24,501 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,501 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,502 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,502 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,502 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,502 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,502 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,503 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,503 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,503 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,503 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,503 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,504 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,504 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,504 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,504 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,505 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,505 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,505 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,505 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,505 - __main__ - INFO - 性能测试进度: 20/100
+2025-07-31 10:24:24,505 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,506 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,506 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,506 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,507 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,507 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,507 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,507 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,507 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,507 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,508 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,508 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,509 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,509 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,509 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,510 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,510 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,510 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,510 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,510 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,510 - __main__ - INFO - 性能测试进度: 40/100
+2025-07-31 10:24:24,511 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,511 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,511 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,511 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,511 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,512 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,512 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,512 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,512 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,513 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,513 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,513 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,513 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,514 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,514 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,514 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,515 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,515 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,516 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,516 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,516 - __main__ - INFO - 性能测试进度: 60/100
+2025-07-31 10:24:24,516 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,517 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,517 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,517 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,517 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,518 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,518 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,518 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,518 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,520 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,521 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,521 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,521 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,521 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,521 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,522 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,522 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,522 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,522 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,522 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,522 - __main__ - INFO - 性能测试进度: 80/100
+2025-07-31 10:24:24,523 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,523 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,523 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,523 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,523 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,524 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,524 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,524 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,524 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,524 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,525 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,525 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,525 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,525 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,525 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,526 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,526 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,526 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,526 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:24:24,526 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🏁 回合结束: episode_20250731_102424_performance_test
+2025-07-31 10:24:24,526 - src.rlhf_data_collection.rlhf_data_collector - INFO -    总奖励: -50.000
+2025-07-31 10:24:24,526 - src.rlhf_data_collection.rlhf_data_collector - INFO -    数据点数: 100
+2025-07-31 10:24:24,526 - src.rlhf_data_collection.rlhf_data_collector - INFO -    任务成功: True
+2025-07-31 10:24:24,527 - __main__ - INFO - ✅ 性能测试完成: 3520.01 数据点/秒
+2025-07-31 10:24:24,527 - __main__ - INFO - 📋 生成测试报告...
+2025-07-31 10:24:24,528 - __main__ - INFO - ================================================================================
+2025-07-31 10:24:24,528 - __main__ - INFO - 📋 测试报告摘要
+2025-07-31 10:24:24,528 - __main__ - INFO - ================================================================================
+2025-07-31 10:24:24,528 - __main__ - INFO - 总测试数: 14
+2025-07-31 10:24:24,528 - __main__ - INFO - 通过测试: 5
+2025-07-31 10:24:24,528 - __main__ - INFO - 失败测试: 9
+2025-07-31 10:24:24,528 - __main__ - INFO - 成功率: 35.71%
+2025-07-31 10:24:24,529 - __main__ - INFO - 详细报告: test_results_rlhf.json
+2025-07-31 10:24:24,529 - __main__ - INFO - ================================================================================
+2025-07-31 10:24:24,529 - __main__ - INFO - ✅ RLHF数据采集系统测试完成
+2025-07-31 10:24:24,529 - __main__ - INFO - ✅ 所有测试完成
+2025-07-31 10:24:24,529 - __main__ - INFO - 🏁 RLHF数据采集系统测试结束

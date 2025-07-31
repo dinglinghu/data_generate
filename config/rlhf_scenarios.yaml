@@ -1,0 +1,244 @@
+# RLHF强化学习场景配置文件
+# 用于生成多样化的训练场景
+
+# 场景多样性配置
+scenario_diversity:
+  # 威胁场景变化
+  threat_scenarios:
+    # 单一威胁场景
+    single_threat:
+      missile_count: [1, 1]
+      threat_level: ["low", "medium", "high"]
+      launch_patterns: ["random", "coordinated"]
+      
+    # 多威胁场景  
+    multiple_threats:
+      missile_count: [2, 8]
+      simultaneous_launches: true
+      coordinated_attacks: true
+      decoy_missiles: true
+      
+    # 饱和攻击场景
+    saturation_attack:
+      missile_count: [10, 20]
+      launch_time_window: [60, 300]  # 秒
+      geographic_distribution: "global"
+      
+  # 星座配置变化
+  constellation_variations:
+    # 不同星座规模
+    constellation_sizes:
+      small: {planes: 2, satellites_per_plane: 2}
+      medium: {planes: 3, satellites_per_plane: 3}
+      large: {planes: 4, satellites_per_plane: 4}
+      
+    # 轨道参数变化
+    orbital_variations:
+      altitude_range: [800, 2000]    # km
+      inclination_range: [45, 98]    # 度
+      eccentricity_range: [0.0, 0.1]
+      
+  # 环境条件变化
+  environment_variations:
+    # 时间条件
+    temporal_conditions:
+      time_of_day: ["dawn", "day", "dusk", "night"]
+      season: ["spring", "summer", "autumn", "winter"]
+      
+    # 空间环境
+    space_environment:
+      solar_activity: ["low", "medium", "high"]
+      atmospheric_density: [0.8, 1.2]  # 相对标准值
+      
+# 强化学习数据标注
+rl_data_annotation:
+  # 状态标注
+  state_labels:
+    satellite_health: ["healthy", "degraded", "critical"]
+    mission_phase: ["initialization", "tracking", "handover", "completion"]
+    threat_assessment: ["no_threat", "potential", "confirmed", "imminent"]
+    
+  # 动作标注
+  action_labels:
+    control_type: ["autonomous", "manual", "hybrid"]
+    urgency_level: ["routine", "priority", "emergency"]
+    coordination_mode: ["independent", "collaborative", "centralized"]
+    
+  # 奖励标注
+  reward_labels:
+    performance_tier: ["poor", "acceptable", "good", "excellent"]
+    efficiency_rating: ["inefficient", "moderate", "efficient", "optimal"]
+    mission_success: ["failed", "partial", "successful", "exceptional"]
+
+# 数据质量控制
+data_quality:
+  # 数据验证规则
+  validation_rules:
+    position_bounds: true          # 位置边界检查
+    velocity_limits: true          # 速度限制检查
+    attitude_constraints: true     # 姿态约束检查
+    temporal_consistency: true     # 时间一致性检查
+    
+  # 数据完整性检查
+  completeness_checks:
+    required_fields: ["timestamp", "satellite_id", "position", "velocity"]
+    optional_fields: ["attitude", "power_status", "payload_status"]
+    missing_data_threshold: 0.05   # 5%缺失数据阈值
+    
+  # 数据异常检测
+  anomaly_detection:
+    statistical_outliers: true     # 统计异常值检测
+    physical_constraints: true     # 物理约束检查
+    temporal_anomalies: true       # 时间异常检测
+
+# 训练数据生成策略
+training_data_generation:
+  # 数据采样策略
+  sampling_strategy:
+    temporal_sampling:
+      interval_type: "adaptive"    # 自适应采样间隔
+      high_activity_rate: 1.0      # 高活动期采样率(秒)
+      low_activity_rate: 10.0      # 低活动期采样率(秒)
+      
+    spatial_sampling:
+      coverage_based: true         # 基于覆盖的采样
+      threat_proximity: true       # 威胁邻近采样
+      
+  # 数据增强策略
+  data_augmentation:
+    noise_injection:
+      position_noise: 0.01         # 位置噪声标准差(km)
+      velocity_noise: 0.001        # 速度噪声标准差(km/s)
+      attitude_noise: 0.1          # 姿态噪声标准差(度)
+      
+    scenario_perturbation:
+      launch_time_jitter: 30       # 发射时间抖动(秒)
+      trajectory_variation: 0.05   # 轨迹变化比例
+      
+# 专家演示数据
+expert_demonstrations:
+  # 专家策略类型
+  expert_strategies:
+    optimal_tracking: true         # 最优跟踪策略
+    resource_efficient: true      # 资源高效策略
+    robust_defense: true          # 鲁棒防御策略
+    
+  # 演示场景
+  demonstration_scenarios:
+    standard_scenarios: 50         # 标准场景数量
+    challenging_scenarios: 30      # 挑战场景数量
+    edge_cases: 20                # 边缘案例数量
+    
+# 对抗样本生成
+adversarial_samples:
+  # 对抗攻击类型
+  attack_types:
+    evasive_maneuvers: true       # 规避机动
+    decoy_deployment: true        # 诱饵部署
+    jamming_attacks: true         # 干扰攻击
+    
+  # 对抗强度
+  adversarial_strength:
+    mild: 0.1                     # 轻微对抗
+    moderate: 0.3                 # 中等对抗
+    severe: 0.5                   # 严重对抗
+
+# 评估指标配置
+evaluation_metrics:
+  # 性能指标
+  performance_metrics:
+    tracking_accuracy: true       # 跟踪精度
+    coverage_ratio: true          # 覆盖率
+    response_time: true           # 响应时间
+    false_alarm_rate: true        # 虚警率
+    
+  # 效率指标
+  efficiency_metrics:
+    power_efficiency: true        # 功率效率
+    computational_efficiency: true # 计算效率
+    communication_efficiency: true # 通信效率
+    
+  # 鲁棒性指标
+  robustness_metrics:
+    noise_tolerance: true         # 噪声容忍度
+    failure_recovery: true        # 故障恢复
+    adaptability: true           # 适应性
+
+# 数据输出格式
+output_format:
+  # 强化学习标准格式
+  rl_format:
+    state_action_reward: true     # 状态-动作-奖励三元组
+    trajectory_format: true      # 轨迹格式
+    episode_format: true         # 回合格式
+
+  # 深度学习格式
+  dl_format:
+    tensor_format: true          # 张量格式
+    batch_format: true           # 批处理格式
+    sequence_format: true        # 序列格式
+
+  # 标准数据格式
+  standard_format:
+    json_format: true            # JSON格式
+    hdf5_format: true           # HDF5格式
+    csv_format: true            # CSV格式
+
+# RLHF数据采集配置
+rlhf_data_collection:
+  # 状态空间配置
+  state_space:
+    satellite_states:
+      position: true
+      velocity: true
+      attitude: true
+      orbital_elements: true
+      power_status: true
+      payload_status: true
+
+    missile_states:
+      position: true
+      velocity: true
+      trajectory_prediction: true
+      threat_level: true
+      flight_phase: true
+      remaining_time: true
+
+    environment_states:
+      time_of_day: true
+      sun_position: true
+      earth_shadow: true
+
+    mission_states:
+      tracking_assignments: true
+      resource_utilization: true
+      coverage_gaps: true
+
+  # 动作空间配置
+  action_space:
+    satellite_actions:
+      attitude_control: true
+      payload_pointing: true
+      power_management: true
+
+    mission_actions:
+      target_assignment: true
+      tracking_priority: true
+      resource_allocation: true
+
+  # 奖励函数配置
+  reward_components:
+    tracking_performance:
+      coverage_time: true
+      tracking_accuracy: true
+      target_detection: true
+
+    resource_efficiency:
+      power_consumption: true
+      communication_bandwidth: true
+      computational_load: true
+
+    mission_completion:
+      threat_neutralization: true
+      coverage_completeness: true
+      response_time: true

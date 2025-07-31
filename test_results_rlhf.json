@@ -1,0 +1,434 @@
+{
+  "component_tests": {
+    "reward_calculator": {
+      "status": "PASS",
+      "reward": -0.5,
+      "breakdown": {
+        "tracking_performance": 0.0,
+        "resource_efficiency": 0.0,
+        "mission_completion": 0.0,
+        "penalty": 0.5,
+        "total_reward": -0.5
+      }
+    },
+    "data_quality_validator": {
+      "status": "PASS",
+      "validation_result": {
+        "is_valid": true,
+        "validation_score": 1.0,
+        "errors": [],
+        "warnings": [],
+        "anomalies": [],
+        "quality_metrics": {
+          "completeness": {
+            "is_complete": true,
+            "completeness_score": 1.0,
+            "missing_fields": [],
+            "present_fields": [],
+            "required_completeness": 1.0,
+            "optional_completeness": 1.0
+          },
+          "format": {
+            "is_valid": true,
+            "format_errors": []
+          },
+          "physics": {
+            "is_valid": true,
+            "constraint_violations": []
+          },
+          "temporal": {
+            "is_consistent": true,
+            "inconsistencies": []
+          }
+        }
+      },
+      "statistics": {
+        "total_validations": 1,
+        "passed_validations": 1,
+        "failed_validations": 0,
+        "success_rate": 1.0,
+        "anomaly_detections": 0,
+        "average_quality_score": 1.0,
+        "historical_data_size": 1
+      }
+    },
+    "expert_policy": {
+      "status": "PASS",
+      "strategies_tested": 4,
+      "strategy_results": {
+        "optimal_tracking": {
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": "dict_values([])",
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.8,
+                    "communication": 0.15,
+                    "attitude_control": 0.05
+                  }
+                }
+              },
+              "Satellite02": {
+                "payload_pointing": {
+                  "target_coordinates": "dict_values([])",
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.8,
+                    "communication": 0.15,
+                    "attitude_control": 0.05
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                },
+                {
+                  "satellite_id": "Satellite02",
+                  "target_id": "Missile02",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "optimal_tracking",
+              "generation_time": "2025-07-31T10:24:24.493275",
+              "confidence": 1.0
+            }
+          },
+          "confidence": 1.0
+        },
+        "resource_efficient": {
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              },
+              "Satellite02": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 1,
+                  "assignment_duration": 600.0
+                },
+                {
+                  "satellite_id": "Satellite02",
+                  "target_id": "Missile02",
+                  "priority": 1,
+                  "assignment_duration": 600.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "resource_efficient",
+              "generation_time": "2025-07-31T10:24:24.493342",
+              "confidence": 1.0
+            }
+          },
+          "confidence": 1.0
+        },
+        "robust_defense": {
+          "action": {
+            "satellite_actions": {},
+            "mission_actions": {
+              "target_assignments": [],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "robust_defense",
+              "generation_time": "2025-07-31T10:24:24.493363",
+              "confidence": 0.5
+            }
+          },
+          "confidence": 0.5
+        },
+        "balanced": {
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              },
+              "Satellite02": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                },
+                {
+                  "satellite_id": "Satellite02",
+                  "target_id": "Missile02",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:24:24.493376",
+              "confidence": 1.0
+            }
+          },
+          "confidence": 1.0
+        }
+      }
+    },
+    "action_executor": {
+      "status": "PASS",
+      "mock_result": {
+        "success": true,
+        "executed_actions": [
+          "Satellite01_payload_pointing",
+          "target_assignments"
+        ],
+        "failed_actions": [],
+        "execution_time": "2025-07-31T10:24:24.493898"
+      },
+      "note": "Tested in simulation mode without STK connection"
+    }
+  },
+  "integration_tests": {
+    "full_pipeline": {
+      "status": "PASS",
+      "episode_id": "episode_20250731_102424_test_scenario",
+      "data_points_collected": 5,
+      "total_reward": -2.5,
+      "statistics": {
+        "basic_statistics": {
+          "total_episodes": 1,
+          "total_data_points": 5,
+          "valid_data_points": 5,
+          "invalid_data_points": 0,
+          "data_quality_rate": 1.0,
+          "average_reward": -0.5,
+          "average_quality_score": 1.0,
+          "successful_episodes": 1,
+          "episode_success_rate": 1.0,
+          "episode_data_points": 5,
+          "average_episode_reward": -2.5,
+          "average_episode_length": 5.0
+        },
+        "component_statistics": {
+          "data_quality_validator": {
+            "total_validations": 5,
+            "passed_validations": 5,
+            "failed_validations": 0,
+            "success_rate": 1.0,
+            "anomaly_detections": 0,
+            "average_quality_score": 1.0,
+            "historical_data_size": 5
+          }
+        },
+        "collection_timestamp": "2025-07-31T10:24:24.497771"
+      }
+    }
+  },
+  "data_quality_tests": {
+    "normal_data": {
+      "is_valid": true,
+      "validation_score": 1.0,
+      "errors": [],
+      "warnings": [],
+      "anomalies": [],
+      "quality_metrics": {
+        "completeness": {
+          "is_complete": true,
+          "completeness_score": 1.0,
+          "missing_fields": [],
+          "present_fields": [],
+          "required_completeness": 1.0,
+          "optional_completeness": 1.0
+        },
+        "format": {
+          "is_valid": true,
+          "format_errors": []
+        },
+        "physics": {
+          "is_valid": true,
+          "constraint_violations": []
+        },
+        "temporal": {
+          "is_consistent": true,
+          "inconsistencies": []
+        }
+      }
+    },
+    "missing_data": {
+      "is_valid": true,
+      "validation_score": 0.9,
+      "errors": [],
+      "warnings": [
+        "time_step_too_small: 0.0s"
+      ],
+      "anomalies": [],
+      "quality_metrics": {
+        "completeness": {
+          "is_complete": true,
+          "completeness_score": 1.0,
+          "missing_fields": [],
+          "present_fields": [],
+          "required_completeness": 1.0,
+          "optional_completeness": 1.0
+        },
+        "format": {
+          "is_valid": true,
+          "format_errors": []
+        },
+        "physics": {
+          "is_valid": true,
+          "constraint_violations": []
+        },
+        "temporal": {
+          "is_consistent": false,
+          "inconsistencies": [
+            "time_step_too_small: 0.0s"
+          ]
+        }
+      }
+    },
+    "anomaly_data": {
+      "is_valid": false,
+      "validation_score": 0.6,
+      "errors": [
+        "invalid_reward_value"
+      ],
+      "warnings": [
+        "time_step_too_small: 0.0s"
+      ],
+      "anomalies": [],
+      "quality_metrics": {
+        "completeness": {
+          "is_complete": true,
+          "completeness_score": 1.0,
+          "missing_fields": [],
+          "present_fields": [],
+          "required_completeness": 1.0,
+          "optional_completeness": 1.0
+        },
+        "format": {
+          "is_valid": false,
+          "format_errors": [
+            "invalid_reward_value"
+          ]
+        },
+        "physics": {
+          "is_valid": true,
+          "constraint_violations": []
+        },
+        "temporal": {
+          "is_consistent": false,
+          "inconsistencies": [
+            "time_step_too_small: 0.0s"
+          ]
+        }
+      }
+    },
+    "validator_stats": {
+      "total_validations": 3,
+      "passed_validations": 2,
+      "failed_validations": 1,
+      "success_rate": 0.6666666666666666,
+      "anomaly_detections": 0,
+      "average_quality_score": 0.8333333333333334,
+      "historical_data_size": 3
+    }
+  },
+  "performance_tests": {
+    "status": "PASS",
+    "data_points": 100,
+    "duration_seconds": 0.028409,
+    "points_per_second": 3520.011264036045,
+    "memory_usage": "Not measured"
+  }
+}

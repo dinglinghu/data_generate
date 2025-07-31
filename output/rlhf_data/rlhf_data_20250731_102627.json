@@ -1,0 +1,1667 @@
+{
+  "metadata": {
+    "collection_time": "2025-07-31T10:26:27.225068",
+    "total_episodes": 4,
+    "total_data_points": 25,
+    "config": {}
+  },
+  "episodes": [
+    {
+      "episode_id": "episode_20250731_102627_demonstration",
+      "scenario_type": "demonstration",
+      "start_time": "2025-07-25T00:00:00",
+      "end_time": "2025-07-25T00:10:00",
+      "total_reward": -5.0,
+      "success": true,
+      "metadata": {
+        "scenario_params": {
+          "difficulty": "medium",
+          "missile_count": 3,
+          "duration": 600
+        },
+        "constellation_info": {
+          "type": "Walker",
+          "total_satellites": 1,
+          "satellite_list": [
+            "Satellite01"
+          ]
+        }
+      },
+      "data_points": [
+        {
+          "timestamp": "2025-07-25T00:00:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 0.2,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 0.2
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.210321",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 0.2,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 0.21000000000000002
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:00:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 7200,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 6400,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 0.2
+            },
+            "simulation_progress": 0.0,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:01:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 0.4,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 0.4
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.210964",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 0.4,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 0.41000000000000003
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:01:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 7400,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 6300,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 0.4
+            },
+            "simulation_progress": 0.06944444444444445,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:02:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 0.6000000000000001,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 0.6000000000000001
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.211392",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 0.6000000000000001,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 0.6100000000000001
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:02:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 7600,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 6200,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 0.6000000000000001
+            },
+            "simulation_progress": 0.1388888888888889,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:03:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 0.8,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 0.8
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.211785",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 0.8,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 0.81
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:03:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 7800,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 6100,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 0.8
+            },
+            "simulation_progress": 0.20833333333333334,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:04:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.0
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.212213",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.01
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:04:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 8000,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 6000,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 1.0
+            },
+            "simulation_progress": 0.2777777777777778,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:05:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.0
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.212600",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.01
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:05:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 8200,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 5900,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 1.0
+            },
+            "simulation_progress": 0.3472222222222222,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:06:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.0
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.213266",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.01
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:06:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 8400,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 5800,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 1.0
+            },
+            "simulation_progress": 0.4166666666666667,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:07:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.0
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.214008",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.01
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:07:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 8600,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 5700,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 1.0
+            },
+            "simulation_progress": 0.4861111111111111,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:08:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.0
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.214429",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.01
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:08:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 8800,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 5600,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 1.0
+            },
+            "simulation_progress": 0.5555555555555556,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "timestamp": "2025-07-25T00:09:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.0
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointing_mode": "tracking",
+                  "scan_pattern": "none"
+                },
+                "power_management": {
+                  "power_allocation": {
+                    "payload": 0.5,
+                    "communication": 0.3,
+                    "attitude_control": 0.2
+                  }
+                }
+              }
+            },
+            "mission_actions": {
+              "target_assignments": [
+                {
+                  "satellite_id": "Satellite01",
+                  "target_id": "Missile01",
+                  "priority": 2,
+                  "assignment_duration": 300.0
+                }
+              ],
+              "resource_allocation": {},
+              "coordination_commands": {}
+            },
+            "strategy_info": {
+              "strategy_type": "balanced",
+              "generation_time": "2025-07-31T10:26:27.214867",
+              "confidence": 1.0
+            }
+          },
+          "reward": -0.5,
+          "next_state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.01
+          },
+          "done": false,
+          "info": {
+            "base_data": {
+              "collection_time": "2025-07-25T00:09:00",
+              "satellites": [
+                {
+                  "satellite_id": "Satellite01",
+                  "position": {
+                    "x": 9000,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 0,
+                    "vy": 7.5,
+                    "vz": 0
+                  },
+                  "payload_status": {
+                    "operational": true,
+                    "power_consumption": 80
+                  }
+                }
+              ],
+              "missiles": [
+                {
+                  "missile_id": "Missile01",
+                  "position": {
+                    "x": 5500,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "velocity": {
+                    "vx": 2,
+                    "vy": 0,
+                    "vz": 0
+                  },
+                  "threat_level": "medium"
+                }
+              ],
+              "visibility": [
+                {
+                  "satellite_id": "Satellite01",
+                  "missile_id": "Missile01",
+                  "has_visibility": true
+                }
+              ],
+              "simulation_progress": 1.0
+            },
+            "simulation_progress": 0.625,
+            "action_result": null,
+            "validation_result": {
+              "is_valid": true,
+              "validation_score": 1.0,
+              "errors": [],
+              "warnings": [],
+              "anomalies": [],
+              "quality_metrics": {
+                "completeness": {
+                  "is_complete": true,
+                  "completeness_score": 1.0,
+                  "missing_fields": [],
+                  "present_fields": [],
+                  "required_completeness": 1.0,
+                  "optional_completeness": 1.0
+                },
+                "format": {
+                  "is_valid": true,
+                  "format_errors": []
+                },
+                "physics": {
+                  "is_valid": true,
+                  "constraint_violations": []
+                },
+                "temporal": {
+                  "is_consistent": true,
+                  "inconsistencies": []
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "episode_id": "episode_20250731_102627_batch_test_0",
+      "scenario_type": "batch_test_0",
+      "start_time": "2025-07-25T00:10:00",
+      "end_time": "2025-07-25T00:12:30",
+      "total_reward": -2.5,
+      "success": true,
+      "metadata": {
+        "scenario_params": {
+          "batch_index": 0
+        },
+        "constellation_info": {
+          "type": "Walker",
+          "total_satellites": 1,
+          "satellite_list": [
+            "Satellite01"
+          ]
+        }
+      },
+      "data_points": [
+        {
+          "timestamp": "2025-07-25T00:10:00",
+          "state": {
+            "visibility_matrix": [
+              [
+                1
+              ]
+            ],
+            "coverage_ratio": 1.0,
+            "satellite_coverage_counts": [
+              1
+            ],
+            "missile_coverage_counts": [
+              1
+            ],
+            "simulation_progress": 1.0,
+            "active_satellites": 1,
+            "active_missiles": 1,
+            "mission_progress": 1.0
+          },
+          "action": {
+            "satellite_actions": {
+              "Satellite01": {
+                "payload_pointing": {
+                  "target_coordinates": 

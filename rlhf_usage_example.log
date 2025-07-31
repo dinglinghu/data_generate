@@ -1,0 +1,148 @@
+2025-07-31 10:26:27,198 - __main__ - INFO - 🚀 RLHF数据采集系统使用示例启动
+2025-07-31 10:26:27,198 - __main__ - INFO - 🚀 RLHF数据采集系统使用示例启动...
+2025-07-31 10:26:27,205 - src.utils.config_manager - INFO - ✅ 配置文件加载成功: config/config.yaml
+2025-07-31 10:26:27,208 - src.utils.time_manager - INFO - 🕐 时间管理器初始化完成:
+2025-07-31 10:26:27,208 - src.utils.time_manager - INFO -    仿真时间范围: 2025-07-25 00:00:00 - 2025-07-26 00:00:00
+2025-07-31 10:26:27,208 - src.utils.time_manager - INFO -    历元时间: 2025-07-25 00:00:00
+2025-07-31 10:26:27,208 - src.utils.time_manager - INFO -    数据采集间隔: [60, 300]秒
+2025-07-31 10:26:27,209 - src.utils.time_manager - INFO -    保存频率: 每2次采集保存一次
+2025-07-31 10:26:27,209 - src.utils.time_manager - INFO -    总采集次数目标: 50次
+2025-07-31 10:26:27,209 - src.utils.time_manager - INFO -    导弹发射间隔: [300, 1800]秒
+2025-07-31 10:26:27,209 - src.rlhf_data_collection.reward_calculator - INFO - 🎯 RLHF奖励计算器初始化完成
+2025-07-31 10:26:27,209 - src.rlhf_data_collection.data_quality_validator - INFO - 🔍 RLHF数据质量验证器初始化完成
+2025-07-31 10:26:27,209 - src.rlhf_data_collection.rlhf_data_collector - WARNING - ⚠️ 未提供STK管理器，动作执行功能将不可用
+2025-07-31 10:26:27,209 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🤖 RLHF数据采集器初始化完成
+2025-07-31 10:26:27,209 - src.rlhf_data_collection.expert_policy - INFO - 🧠 RLHF专家策略生成器初始化完成
+2025-07-31 10:26:27,209 - __main__ - INFO - ✅ RLHF系统初始化完成
+2025-07-31 10:26:27,209 - __main__ - INFO - ================================================================================
+2025-07-31 10:26:27,209 - __main__ - INFO - 📚 基本使用方法演示
+2025-07-31 10:26:27,209 - __main__ - INFO - ================================================================================
+2025-07-31 10:26:27,210 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🎬 开始新回合: episode_20250731_102627_demonstration, 场景类型: demonstration
+2025-07-31 10:26:27,210 - __main__ - INFO - 🎬 开始训练回合: episode_20250731_102627_demonstration
+2025-07-31 10:26:27,210 - __main__ - INFO - 📊 采集步骤 1/10
+2025-07-31 10:26:27,210 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,210 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,210 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,210 - __main__ - INFO - 📊 采集步骤 2/10
+2025-07-31 10:26:27,211 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,211 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,211 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,211 - __main__ - INFO - 📊 采集步骤 3/10
+2025-07-31 10:26:27,211 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,211 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,211 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,211 - __main__ - INFO - 📊 采集步骤 4/10
+2025-07-31 10:26:27,211 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,211 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,212 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,212 - __main__ - INFO - 📊 采集步骤 5/10
+2025-07-31 10:26:27,212 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,212 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,212 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,212 - __main__ - INFO - 📊 采集步骤 6/10
+2025-07-31 10:26:27,212 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,212 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,213 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,213 - __main__ - INFO - 📊 采集步骤 7/10
+2025-07-31 10:26:27,213 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,213 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,213 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,213 - __main__ - INFO - 📊 采集步骤 8/10
+2025-07-31 10:26:27,214 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,214 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,214 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,214 - __main__ - INFO - 📊 采集步骤 9/10
+2025-07-31 10:26:27,214 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,214 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,214 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,214 - __main__ - INFO - 📊 采集步骤 10/10
+2025-07-31 10:26:27,214 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,215 - __main__ - INFO -    ✅ 数据点采集成功: 奖励=-0.500
+2025-07-31 10:26:27,215 - __main__ - INFO -    📊 奖励分解: {'tracking_performance': np.float64(0.0), 'resource_efficiency': np.float64(0.0), 'mission_completion': np.float64(0.0), 'penalty': 0.5, 'total_reward': np.float64(-0.5)}
+2025-07-31 10:26:27,215 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🏁 回合结束: episode_20250731_102627_demonstration
+2025-07-31 10:26:27,215 - src.rlhf_data_collection.rlhf_data_collector - INFO -    总奖励: -5.000
+2025-07-31 10:26:27,215 - src.rlhf_data_collection.rlhf_data_collector - INFO -    数据点数: 10
+2025-07-31 10:26:27,215 - src.rlhf_data_collection.rlhf_data_collector - INFO -    任务成功: True
+2025-07-31 10:26:27,215 - __main__ - INFO - 🏁 回合结束: 总奖励=-5.000, 数据点数=10
+2025-07-31 10:26:27,217 - src.rlhf_data_collection.rlhf_data_collector - INFO - 💾 RLHF数据已保存为JSON格式: output\rlhf_data\rlhf_data_20250731_102627.json
+2025-07-31 10:26:27,218 - __main__ - INFO - 💾 数据已保存: output\rlhf_data\rlhf_data_20250731_102627.json
+2025-07-31 10:26:27,218 - __main__ - INFO - 📈 采集统计:
+2025-07-31 10:26:27,218 - __main__ - INFO -    total_episodes: 1
+2025-07-31 10:26:27,218 - __main__ - INFO -    total_data_points: 10
+2025-07-31 10:26:27,218 - __main__ - INFO -    valid_data_points: 10
+2025-07-31 10:26:27,218 - __main__ - INFO -    invalid_data_points: 0
+2025-07-31 10:26:27,218 - __main__ - INFO -    data_quality_rate: 1.0
+2025-07-31 10:26:27,218 - __main__ - INFO -    average_reward: -0.5
+2025-07-31 10:26:27,218 - __main__ - INFO -    average_quality_score: 1.0
+2025-07-31 10:26:27,218 - __main__ - INFO -    successful_episodes: 1
+2025-07-31 10:26:27,218 - __main__ - INFO -    episode_success_rate: 1.0
+2025-07-31 10:26:27,218 - __main__ - INFO -    episode_data_points: 10
+2025-07-31 10:26:27,218 - __main__ - INFO -    average_episode_reward: -5.0
+2025-07-31 10:26:27,218 - __main__ - INFO -    average_episode_length: 10.0
+2025-07-31 10:26:27,218 - __main__ - INFO - ================================================================================
+2025-07-31 10:26:27,218 - __main__ - INFO - 🔬 高级功能演示
+2025-07-31 10:26:27,218 - __main__ - INFO - ================================================================================
+2025-07-31 10:26:27,219 - __main__ - INFO - 🧠 演示专家策略...
+2025-07-31 10:26:27,219 - __main__ - INFO -    🎯 测试策略: optimal_tracking
+2025-07-31 10:26:27,219 - __main__ - INFO -       置信度: 1.000, 奖励: -0.500
+2025-07-31 10:26:27,219 - __main__ - INFO -       卫星动作: 2, 任务分配: 2
+2025-07-31 10:26:27,219 - __main__ - INFO -    🎯 测试策略: resource_efficient
+2025-07-31 10:26:27,219 - __main__ - INFO -       置信度: 1.000, 奖励: -0.500
+2025-07-31 10:26:27,219 - __main__ - INFO -       卫星动作: 2, 任务分配: 2
+2025-07-31 10:26:27,219 - __main__ - INFO -    🎯 测试策略: robust_defense
+2025-07-31 10:26:27,219 - __main__ - INFO -       置信度: 0.500, 奖励: -0.500
+2025-07-31 10:26:27,219 - __main__ - INFO -       卫星动作: 0, 任务分配: 0
+2025-07-31 10:26:27,219 - __main__ - INFO -    🎯 测试策略: balanced
+2025-07-31 10:26:27,219 - __main__ - INFO -       置信度: 1.000, 奖励: -0.500
+2025-07-31 10:26:27,219 - __main__ - INFO -       卫星动作: 2, 任务分配: 2
+2025-07-31 10:26:27,219 - __main__ - INFO - 🔍 演示数据质量验证...
+2025-07-31 10:26:27,220 - __main__ - INFO -    📊 测试 正常数据:
+2025-07-31 10:26:27,220 - __main__ - INFO -       有效性: True
+2025-07-31 10:26:27,220 - __main__ - INFO -       质量分数: 0.900
+2025-07-31 10:26:27,220 - __main__ - INFO -       警告: ['time_gap_too_large: 555447.2s']
+2025-07-31 10:26:27,220 - __main__ - INFO -    📊 测试 缺失数据:
+2025-07-31 10:26:27,220 - __main__ - INFO -       有效性: True
+2025-07-31 10:26:27,220 - __main__ - INFO -       质量分数: 0.900
+2025-07-31 10:26:27,220 - __main__ - INFO -       警告: ['time_step_too_small: 0.0s']
+2025-07-31 10:26:27,220 - __main__ - INFO -    📊 测试 异常数据:
+2025-07-31 10:26:27,220 - __main__ - INFO -       有效性: False
+2025-07-31 10:26:27,220 - __main__ - INFO -       质量分数: 0.600
+2025-07-31 10:26:27,220 - __main__ - INFO -       错误: ['invalid_reward_value']
+2025-07-31 10:26:27,220 - __main__ - INFO -       警告: ['time_step_too_small: 0.0s']
+2025-07-31 10:26:27,221 - __main__ - INFO - 📦 演示批量数据生成...
+2025-07-31 10:26:27,221 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🎬 开始新回合: episode_20250731_102627_batch_test_0, 场景类型: batch_test_0
+2025-07-31 10:26:27,221 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=0.900, 完成=False
+2025-07-31 10:26:27,221 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,221 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,221 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🏁 回合结束: episode_20250731_102627_batch_test_0
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO -    总奖励: -2.500
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO -    数据点数: 5
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO -    任务成功: True
+2025-07-31 10:26:27,222 - __main__ - INFO -    ✅ 回合 1 完成: 5 数据点
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🎬 开始新回合: episode_20250731_102627_batch_test_1, 场景类型: batch_test_1
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,222 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,223 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,223 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,223 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🏁 回合结束: episode_20250731_102627_batch_test_1
+2025-07-31 10:26:27,223 - src.rlhf_data_collection.rlhf_data_collector - INFO -    总奖励: -2.500
+2025-07-31 10:26:27,223 - src.rlhf_data_collection.rlhf_data_collector - INFO -    数据点数: 5
+2025-07-31 10:26:27,223 - src.rlhf_data_collection.rlhf_data_collector - INFO -    任务成功: True
+2025-07-31 10:26:27,223 - __main__ - INFO -    ✅ 回合 2 完成: 5 数据点
+2025-07-31 10:26:27,223 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🎬 开始新回合: episode_20250731_102627_batch_test_2, 场景类型: batch_test_2
+2025-07-31 10:26:27,223 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,224 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,224 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,224 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,224 - src.rlhf_data_collection.rlhf_data_collector - INFO - 📊 RLHF数据点采集完成: 奖励=-0.500, 质量分数=1.000, 完成=False
+2025-07-31 10:26:27,224 - src.rlhf_data_collection.rlhf_data_collector - INFO - 🏁 回合结束: episode_20250731_102627_batch_test_2
+2025-07-31 10:26:27,224 - src.rlhf_data_collection.rlhf_data_collector - INFO -    总奖励: -2.500
+2025-07-31 10:26:27,224 - src.rlhf_data_collection.rlhf_data_collector - INFO -    数据点数: 5
+2025-07-31 10:26:27,224 - src.rlhf_data_collection.rlhf_data_collector - INFO -    任务成功: True
+2025-07-31 10:26:27,225 - __main__ - INFO -    ✅ 回合 3 完成: 5 数据点
+2025-07-31 10:26:27,227 - __main__ - ERROR - ❌ 高级功能演示失败: Object of type dict_values is not JSON serializable
+2025-07-31 10:26:27,227 - __main__ - ERROR - ❌ 高级功能演示失败
+2025-07-31 10:26:27,227 - __main__ - INFO - 🏁 RLHF数据采集系统使用示例结束
